@@ -1,0 +1,6322 @@
+<!DOCTYPE html>
+
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Turbo Service Mobile Main page
+    </title>
+
+    <link href="css.css" rel="stylesheet">
+    <script src="jquery.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="google.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="materialize.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/imgs/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/imgs/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/imgs/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/imgs/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/imgs/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Verdana, sans-serif;
+        }
+        
+        .mySlides {
+            display: none;
+        }
+        
+        img {
+            vertical-align: middle;
+        }
+        /* Slideshow container */
+        
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+        /* Caption text */
+        
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            /*width: 100%;*/
+            text-align: center;
+            background-color: black;
+        }
+        /* Number text (1/3 etc) */
+        
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+            background-color: black;
+        }
+        /* The dots/bullets/indicators */
+        
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 2px 4px 0px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        
+        .active {
+            background-color: #717171;
+        }
+        /* Fading animation */
+        
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        .bottomView {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .bottomView button {
+            transform: translateY(-11%);
+            background-color: var(--bg-color);
+            border: none;
+            color: var(--font-nav-color);
+            font-size: 25px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        /* On smaller screens, decrease text size */
+        
+        @media only screen and (max-width: 300px) {
+            .text {
+                font-size: 11px
+            }
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .user-info {
+            border-radius: 25px;
+            padding: 20px;
+            flex-wrap: wrap;
+            background-color: var(--bg-nav-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        
+        .user-update {
+            border-radius: 25px;
+            padding: 20px;
+            flex-wrap: wrap;
+            background-color: var(--bg-nav-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 660px;
+            overflow-wrap: break-word;
+        }
+        
+        .info-icon {
+            margin-right: 4px;
+        }
+        
+        .info-item {
+            flex-basis: 50%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            margin-right: 0px;
+            width: 180px;
+            color: var(--font-nav-color);
+        }
+        
+        .info-value {
+            color: var(--font-nav-color);
+        }
+        
+        .info-value i {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: var(--font-nav-color);
+            background-color: var(--font-nav-color);
+            margin-right: 15px;
+        }
+        /* Different Styles for User Information */
+        /* Style 1 */
+        
+        .user-info.style-1 .info-label {
+            color: var(--font-nav-color);
+        }
+        
+        .user-info.style-1 .info-value i {
+            background-color: var(--font-nav-color);
+        }
+        
+        h4,
+        h5,
+        h6 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--font-nav-color);
+        }
+        
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            margin: 10px;
+        }
+        
+        .icon a {
+            text-decoration: none;
+            /* Remove underline */
+        }
+        
+        .bottom-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .youtube-icon {
+            color: #FF0000;
+            /* YouTube red color */
+        }
+        
+        .whatsapp-icon {
+            color: green;
+            /* YouTube red color */
+        }
+        
+        .facebook-icon {
+            color: #155fff;
+            /* Facebook blue color */
+        }
+        
+        .telegram-icon {
+            color: #1484bb;
+            /* Telegram blue color */
+        }
+        
+        .page-sub-downloads {
+            font-size: 15px;
+            color: var(--font-nav-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0
+        }
+        
+        .mq-container a {
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+        
+        .mq-container a {
+            color: #9c2b2b;
+        }
+        
+        .mq-container marquee {
+            background: var(--bg-color)
+        }
+        
+        .mq-container::selection {
+            color: #fff;
+            text-shadow: none;
+            -webkit-text-shadow: none
+        }
+        
+        .mq-container {
+            padding: 5px
+        }
+        
+        .marquee-set {
+            height: 50px;
+            overflow: hidden;
+            position: relative
+        }
+        
+        .marquee-set .marquee-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            text-align: center;
+            -moz-transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            -moz-animation: marquee-set 15s linear infinite;
+            -webkit-animation: marquee-set 15s linear infinite;
+            animation: marquee-set 40s linear infinite
+        }
+        
+        @-moz-keyframes marquee-set {
+            0% {
+                -moz-transform: translateX(100%)
+            }
+            100% {
+                -moz-transform: translateX(-100%)
+            }
+        }
+        
+        @-webkit-keyframes marquee-set {
+            0% {
+                -webkit-transform: translateX(100%)
+            }
+            100% {
+                -webkit-transform: translateX(-100%)
+            }
+        }
+        
+        @keyframes marquee-set {
+            0% {
+                -moz-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%)
+            }
+            100% {
+                -moz-transform: translateX(-100%);
+                -webkit-transform: translateX(-100%);
+                transform: translateX(-100%)
+            }
+        }
+        
+        .marquee-set .marquee-content:hover {
+            -moz-animation-play-state: paused;
+            -webkit-animation-play-state: paused;
+            animation-play-state: paused
+        }
+        
+        .mq-container .marquee-set {
+            background: var(--bg-nav-color);
+            color: var(--font-nav-color);
+            border-radius: 5px;
+            height: 25px
+        }
+        
+        .mq-container .marquee-set .mq-file-item {
+            font-size: 13px;
+            padding: 5px;
+            margin-right: 15px;
+            display: table-cell;
+            white-space: nowrap
+        }
+        
+        .mq-container .marquee-set a {
+            font-weight: 700
+        }
+        
+        .mq-container .marquee-set .badge {
+            font-size: 10px;
+            font-weight: 600
+        }
+        
+        .mq-container .marquee-set .item_detail {
+            font-size: 11px
+        }
+        
+        .mq-container a {
+            color: var(--font-color);
+        }
+        
+        .mq-container a:hover,
+        .mq-container a:focus,
+        .mq-container a:active {
+            color: #c5afaf
+        }
+        
+        .mq-container::-moz-selection {
+            background-color: #9c2b2b
+        }
+        
+        .mq-container::selection {
+            background-color: #9c2b2b
+        }
+
+        pre{
+            white-space: pre-wrap; /* CSS3 */
+            white-space: -moz-pre-wrap; /* Mozilla */
+            white-space: -pre-wrap; /* Opera 4-6 */
+            white-space: -o-pre-wrap; /* Opera 7 */
+            word-wrap: break-word; /* Internet Explorer 5.5+ */
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none; /* Initially hide the button */
+        }
+    </style>
+
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+
+</head>
+
+<body>
+    <div class="loading">
+        <div class="hourglass"></div>
+    </div>
+    <script>
+        window.addEventListener("load", () => {
+            let loader = document.querySelector(".loading");
+            loader.style.display = "none";
+            // loader.addEventListener("transitionend",()=>{
+            // document.body.removeChild("loader");
+            // });
+        });
+    </script>
+    <div id="modalLogInfo" class="modal modal-fixed-footer">
+        <form class="modal-content">
+            <input id="id" type="text" name="id" value='' hidden title="info___name">
+            <pre class="LogInfoBody">
+            </pre>
+        </form>
+
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+        </div>
+    </div>
+
+    <a class="modal-trigger ReporterUI" href="#modalLogInfo"></a>
+
+    <script>
+        top.lastmsg = '';
+        top.getcookie = function(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        top.tableData = undefined;
+        //top.AutoRefresh = false;
+        top.msgBar = "Search ...";
+        let light_mode = "light_mode",
+            dark_mode = "dark_mode",
+            theme = "theme";
+        let themeName, CurrentTheme = window.localStorage.getItem(theme);
+        top.root = document.getElementsByTagName('html')[0];
+        if (CurrentTheme == light_mode) {
+            top.root.classList.remove("dark");
+            themeName = dark_mode;
+        } else {
+            top.root.classList.add("dark");
+            themeName = light_mode;
+        }
+
+        function SelfCopy(copyArea) {
+            navigator.clipboard.writeText(copyArea.innerHTML.replace("<div></div>", ''));
+            top.ToastMessage("Copied Success", true);
+        }
+
+        $(document).ready(function() {
+
+            themeSwitcher = document.querySelector(".theme-switcher");
+            themeSwitcher.innerHTML = themeName;
+            let themeSwitcherBtn = document.querySelector(".theme-switcher");
+
+            if (themeSwitcher) {
+                let light_mode = "light_mode",
+                    dark_mode = "dark_mode",
+                    theme = "theme",
+                    themeName;
+
+                themeSwitcher.addEventListener("click", function(event) {
+                    if (themeSwitcher.textContent == light_mode) {
+                        top.root.classList.remove("dark");
+                        themeName = dark_mode;
+                    } else {
+                        top.root.classList.add("dark");
+                        themeName = light_mode;
+                    }
+                    window.localStorage.setItem(theme, themeSwitcher.textContent);
+                    themeSwitcher.innerHTML = themeName;
+                });
+            }
+        });
+
+        function OpenLog(numLog) {
+            console.log(numLog);
+            let Data = document.querySelector(`.log-${numLog}-data`).innerHTML;
+            console.log(Data);
+            $(".LogInfoBody").text(Data);
+            top.ClickBySelector(".ReporterUI");
+            document.getElementById(".title").click();
+        }
+    </script>
+
+    <ul id="slide-out" class="sidenav">
+        <li><a class="waves-effect" href="/main?act=Main"><span class="material-icons">account_circle</span>Main Page</a></li>
+        <li><a class="waves-effect" href="/SupportedModels"><span class="material-icons">fact_check</span>Supported Models</a></li>
+        <li><a class="waves-effect" href="/Resellers"><span class="material-icons">device_hub</span>Our Resellers</a></li>
+        <li><a class="waves-effect" href="/Plans"><span class="material-icons">request_quote</span>Plans</a></li>
+        <li><a class="waves-effect" href="/login"><span class="material-icons">account_circle</span>Login</a></li>
+        <li><a class="waves-effect" href="/signup"><span class="material-icons">key</span>Sign UP</a></li>
+        <li><a class="waves-effect" href="/frp"><span class="material-icons">key</span>FRP Shortcuts</a></li>
+        <li><a class="waves-effect" href="/videos"><span class="material-icons">slideshow</span>Videos Tutorials</a></li>
+        <li><a class="waves-effect" onclick="window.open('/download')"><span class="material-icons">download</span>Download</a></li>
+        <li><a class="waves-effect" target="_blank" href="https://speedify.com/download/"><span class="material-icons">download</span>Speedify VPN Download</a></li>
+        <li><a class="waves-effect" onclick="window.open('/drivers')"><span class="material-icons">home_repair_service</span>Drivers</a></li>
+    </ul>
+
+    
+    <nav>
+        <div class="nav-wrapper">
+            <div class="col s12">
+                <a href="?act=Quick" class="breadcrumb breadcrumb-dsh">Main</a>
+                <i data-target="slide-out" class="sidenav-trigger waves-effect waves-light left"><i class="material-icons">menu</i></i>
+                <i class="waves-effect waves-light material-icons right theme-switcher" style="margin-right: 6px;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="progress">
+        <div class="indeterminate"></div>
+    </div>
+
+    <h5 class="title">TSM TOOL</h5>
+    <h6>
+        All-in-One Mobile Utility    
+        <br>
+        Repair, Flash, Unlock ,Utility
+        <br>
+        FRP & KG/MDM Removal
+        <br>
+        Multi-Brand Support
+        <br>
+        Support(Qualcomm,Mediatek,Unisoc,Kirin[Hisilicon],...)
+        <br>
+        High Performance
+        <br>
+        Super Easy to use
+    </h6>
+
+    
+    <div class="page-sub-downloads page-downloads-folder">
+        <link rel="stylesheet" href="/static/css/style.css">
+        <div class="downloads-recent-header">
+            <div class="rf-mq-container mq-container">
+                <div class="col-md-10 col-sm-9 col-xs-10">
+                    <div class="marquee-set">
+                        
+                        <div class="marquee-content">
+                             
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('1')">Samsung Remove KG SM-A057F</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-1-data">Operation : Samsung Remove KG
+selected Mode : ADB Mode
+KG Remove Method : TSM APP
+Load Devices List : OK
+Connect ADB Device [R7AXB00JC1W] : OK
+Model : SM-A057F
+Brand : samsung
+AP : A057FXXU7CXK7
+Android Version : 14
+CP : A057FXXU7CXK3
+CPU Abi : arm64-v8a
+CSC : AFR-AFR-AFR
+DID : 043AA4305E05
+Hardware ID : SM6225
+SIM State : ABSENT,ABSENT
+Security Patch : 2024-11-01
+USB Config : mtp,adb
+Warranty Void Bit : 0
+IMEI : 353753809173047
+KG State : Broken
+Initialization TSM Applet : OK
+Authorization Server : OK
+Installing TSM APP : OK
+Preparing Component : OK
+KG Changing to Active : Skip
+Disabling Factory Reset : OK
+Disabling OTA Updates : OK
+#- Installed TSM Tool KG Bypass Application
+Elapsed Time : 01:05 at [2025/04/19 18:31:28]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 17.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('1')">[ 2025.04.19 18.31.28 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('2')">Restore Security </a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-2-data">Operation : Restore Security
+Elapsed Time : 01:44 at [2025/04/19 17:30:53]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 16.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('2')">[ 2025.04.19 17.30.53 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('3')">Remove FRP k69v1_64_k419</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-3-data">Operation : Remove FRP
+Waiting for Brom/PL device : OK
+USB Port : MediaTek PreLoader USB VCOM_V1632 (Android) (COM3)
+USB Driver : MediaTek Inc. wdm_usb.sys v3.0.1504.0  01-22-2015 [0xE8D-0x2000]
+Protocol Config : Preloader Auth honor - x6b (jdy-lx2)
+Send cmd code : OK
+Read chip : OK
+Active Sec Flag : SBC,DAA
+Init hardware chip : OK
+Read bootloadre version : OK
+Chipset ID : MT6768 Helio P65
+Chip Version : HW Code 0x707 HW Ver 0xca00 SW Ver 0x0
+MEID : EAD62F577D3171B757D6B61925D80DAF
+Bypassing checksum mismatch for 1st DA : OK
+Sending 1st DA : OK
+Jumping 1st DA : OK
+Sending sync : OK
+Setup dev env : OK
+Initiate hw : OK
+Settup device parameters : OK
+Get connection agent : OK
+Send CRB_HASH data : 
+Sending 2nd DA : OK
+Send SLA AUTH : OK
+Read dev info : OK
+
+EMMC Info : 
+- boot1 : 4.00 MB
+- boot2 : 4.00 MB
+- rpmb : 16.00 MB
+- userarea : 232.97 GB
+- cid : 9B01005930533235360083001E494BED
+ram info : 
+- internal : 448.00 KB
+- external : 4.00 GB
+Change to high speed port : OK
+Reading GUID Partition Table : OK
+Read Device info [EROFS] : OK
+- Model : k69v1_64_k419
+- Brand : Honor
+- Android Version : 12
+- Device Name : magic
+- Security Patch : 2025-02-01
+- Build Date : Sun Jan 26 11:50:38 CST 2025
+- SDK Version : 34
+- CPU Abi : arm64-v8a
+- Model : JDY-LX3P
+- Build Number : Jce1vl
+- Firmware Version : JDY-L43P800218C605E2R2P2
+- Android Version : 14
+- Country-Vendor : defla
+- EMUI : MagicOS800
+- PRELOAD : JDY-L43P-PRELOAD8002C605R2
+- CUST : JDY-L43P-CUST8002C605
+- device internal storage : 221.19 GB | encrypted
+Read network info : OK
+- IMEI [1] : 865630071568479
+- IMEI [2] : 865630072068479
+- BT MAC : 00:00:46:00:00:01
+Reset FRP lock : OK
+Reset FRP lock NEW : OK
+Rebooting : OK
+Elapsed Time : 00:18 at [2025/04/19 10:30:42]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 09.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('3')">[ 2025.04.19 10.30.42 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('4')">QR Code+KG Remove &amp; Active SM-A055F</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-4-data">Operation : Qr Code Generator
+Current Method : KG Remove &amp; Active
+Operation : QR Code+KG Remove &amp; Active
+Selected Method : QR Code 14
+Connecting Server : OK
+Please Open QRCode scanner On Your phone
+This QrCode Valid just one time [KG Remove &amp; Active]
+Load Devices List : OK
+Connect ADB Device [R92X40085WN] : OK
+Model : SM-A055F
+Brand : samsung
+AP : A055FXXS4BXE3
+Android Version : 14
+CP : A055FXXS4BXE3
+CPU Abi : arm64-v8a
+CSC : AFR-AFR-AFR
+DID : fe6c1f397d01
+Hardware ID : MT6768
+SIM State : ABSENT,ABSENT
+Security Patch : 2024-05-01
+USB Config : mtp,adb
+Warranty Void Bit : 0
+IMEI : 354660976233562
+KG State : Locked
+Initialization TSM Applet : OK
+Authorization Server : OK
+Converting KG to ACTIVE : OK
+KG State Currently : Active
+Disabling OTA Updates : OK
+#- Removed KG Successfully
+Elapsed Time : 00:40 at [2025/04/19 17:30:56]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 16.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('4')">[ 2025.04.19 17.30.56 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('5')">Disable/Enable OTA Updates XT2091-4</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-5-data">Operation : Disable/Enable OTA Updates
+Selected Method : Disable
+Load Devices List : OK
+Connect ADB Device [ZY22DFMK3M] : OK
+Model : XT2091-4
+MarketName : msi
+Brand : motorola
+AP : 3d8395
+Android Version : 11
+CP : HA10_29.11.02.85R CEBU_LATAMCAP_CUST
+CPU Abi : arm64-v8a
+Carrier ID : amxpe
+Hardware ID : QCOM
+SIM State : LOADED
+Security Patch : 2022-11-01
+USB Config : adb
+IMEI : 356906119408647
+Initialization TSM Applet : OK
+Authorization Server : OK
+Preparing Component : OK
+#- Disabled OTA Updates
+Elapsed Time : 00:23 at [2025/04/19 10:31:10]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 09.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('5')">[ 2025.04.19 10.31.10 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('6')">Factory Reset SM-A057F</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-6-data">Operation : Samsung Factory Reset
+selected Mode : EDL Mode
+Waiting for Qualcomm EDL device : OK
+USB Port : Qualcomm HS-USB QDLoader 9008 (COM24)
+USB Driver : Qualcomm Incorporated qcusbser.sys v2.1.3.5  12-17-2018 [0x5C6-0x9008]
+Operation : Factory Reset
+Selected Model : SM-A057F bit8
+Downloading Loader : OK
+Connecting com port : OK
+Loading programmer file : OK
+Sending programmer file #1 : OK
+Sending nop : OK
+Sending configuration xml : OK
+Reading device info : OK
+- Model : SM-A057F
+- Manufacturer : SAMSUNG
+- Android Version : 14
+- Product : A05SNSDXX
+- Sec Patch : 2025-01-01
+- Build ID : TP1A.220624.014
+- Build Incremental : A057FXXS8CYB1
+- Display ID : UP1A.231005.007.A057FXXS8CYB1
+- Built Date : THU FEB  6 17:51:46 KST 2025
+- Platform : BENGAL
+- CPU ABI : ARM64-V8A
+- SDK Version : 34
+- IMEI : 359264306768861
+- MEID : 35926430676886
+- Serial Number : TSMBAAV1VXG
+- device internal storage : 108.59 GB | encrypted
+
+Reading Backup : &gt;
+- Reading modemst1 : OK
+- Reading modemst2 : OK
+- Reading fsc : OK
+- Reading fsg : OK
+- Reading sec_efs : OK
+- Reading efs : OK
+-&gt; Path :- 
+BackupSecurity.tsm 
+
+Reset factory default : OK
+Rebooting : OK
+Elapsed Time : 00:24 at [2025/04/19 12:31:09]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 11.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('6')">[ 2025.04.19 12.31.09 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('7')">QC Boot Device DUB-LX1</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-7-data">Operation : QC Boot Device
+Waiting for Qualcomm EDL device : OK
+USB Port : ?Qualcomm HS-USB QDLoader 9008 (COM79)?
+USB Driver : Qualcomm Incorporated qcusbser.sys v2.1.1.2  03-19-2014 [0x5C6-0x9008]
+Reading GUID Partition Table : OK
+Reading device info : OK
+- Model : DUB-LX1
+- Manufacturer : Huawei
+- Android Version : 8.1.0
+- Build Number : DUB-LX1820181C185
+- Sec Patch : 2019-06-01
+- Build ID : OPM1.171019.011
+- Display ID : SYSTEM 8.2.0.036(05T4)
+- Built Date : WED JUL 17 02:03:12 CST 2019
+- CPU ABI : ARM64-V8A
+- device internal storage : 53.65 GB | encrypted
+USERDATA is Encrypted, and will NOT be read by default
+Elapsed Time : 00:00 at [2025/04/19 18:31:32]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 17.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('7')">[ 2025.04.19 18.31.32 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('8')">Samsung Disable/Enable Factory Reset SM-A042F</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-8-data">Operation : Samsung Disable/Enable Factory Reset
+Selected Method : Disable
+Load Devices List : OK
+Connect ADB Device [R83W3014BXH] : OK
+Model : SM-A042F
+Brand : samsung
+AP : A042FXXS8EXF3
+Android Version : 14
+CP : A042FXXS8EXF2
+CPU Abi : arm64-v8a
+CSC : XFA-XFA-XFA
+DID : 43b1c17b4c61
+Hardware ID : MT6765
+SIM State : ABSENT,ABSENT
+Security Patch : 2024-07-01
+USB Config : mtp,adb
+Warranty Void Bit : 0
+IMEI : 351610268023695
+Initialization TSM Applet : OK
+Authorization Server : OK
+Installing TSM APP : OK
+Preparing Component : OK
+#- Disabled Factory Reset Successfully
+Elapsed Time : 00:29 at [2025/04/19 03:31:38]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 02.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('8')">[ 2025.04.19 03.31.38 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('9')"> TECNO KL4</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-9-data">Operation : Unisoc Factory Reset
+Waiting for Unisoc FDL device : OK
+USB Port : SPRD U2S Diag (COM9)
+USB Driver : UNISOC Communications Inc. sprdvcom.sys v4.20.42.134  10-14-2020 [0x1782-0x4D00]
+Current Chip : Tiger T606_64
+Connect com port : OK
+Handshaking : OK
+Sending payload : OK
+Sending preloader : OK
+Sending fdl loader : OK
+Reading device info : OK
+- Model : TECNO KL4
+- Brand : TECNO
+- Product : TSSI
+- Marketname : TECNO
+- Android Version : 14
+- Patched : 2024-12-05
+- Build ID : TP1A.220624.014
+- build incremental : 241220V1
+- Built Date : FRI DEC 20 14:28:43 CST 2024
+- Platform : UMS9230
+- SDK Version : 34
+- CPU Abi : ARM64-V8A
+
+Reading Backup : &gt;
+- Reading splloader : OK
+- Reading prodnv : OK
+- Reading miscdata : OK
+- Reading uboot_a : OK
+- Reading uboot_b : OK
+- Reading uboot_log : OK
+- Reading trustos_a : OK
+- Reading trustos_b : OK
+- Reading l_fixnv1_a : OK
+- Reading l_fixnv1_b : OK
+- Reading l_fixnv2_a : OK
+- Reading l_fixnv2_b : OK
+-&gt; Path :- 
+BackupSecurity.tsm 
+
+Formatting userdata : OK
+Formatting cache : OK
+Formatting metadata : OK
+Rebooting : OK
+
+Elapsed Time : 01:17 at [2025/04/19 10:31:48]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 09.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('9')">[ 2025.04.19 10.31.48 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('10')">Tecno Disable/Enable Factory Reset TECNO KL4</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-10-data">Operation : Tecno Disable/Enable Factory Reset
+Selected Method : Disable
+Load Devices List : FAILED
+Reconnect ADB Again : 
+Load Devices List : OK
+Connect ADB Device [ASALE3741B000023] : OK
+Model : TECNO KL4
+MarketName : tssi
+Brand : TECNO
+AP : 241101V2987
+Android Version : 14
+CPU Abi : arm64-v8a
+Carrier ID : Unknown
+Hardware ID : UMS9230_KL4_GO
+Security Patch : 2024-10-05
+USB Config : mtp,adb
+IMEI : Unknown
+Initialization TSM Applet : OK
+Authorization Server : OK
+Installing TSM APP : OK
+Preparing Component : OK
+#- Disabled Factory Reset Successfully
+Elapsed Time : 00:32 at [2025/04/19 17:32:01]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 16.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('10')">[ 2025.04.19 17.32.01 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('11')">Remove IT Admin XQ-AD51</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-11-data">Operation : Remove IT Admin
+Wait For ADB Device : OK
+Load Devices List : 
+Please allow usb debugging on device screen:
+- HQ607U5302
+In your phone Click Always Allow from this computer
+Reconnect ADB Again : 
+Load Devices List : OK
+Connect ADB Device [HQ607U5302] : OK
+Model : XQ-AD51
+Brand : Sony
+AP : 907223466
+Android Version : 9
+CP : MOLY.LR12A.R3.TC9.PDX202.PR.SP.V1.P9
+CPU Abi : arm64-v8a
+Carrier ID : Unknown
+Hardware ID : MT6765
+Security Patch : 2022-01-05
+USB Config : mtp,adb
+IMEI : 353526110699367
+Initialization TSM Applet : OK
+Authorization Server : OK
+Installing TSM APP : OK
+Method : TSM controller
+Preparing Component : OK
+please finish the steps on your phone
+Note : If your phone showing isn&#39;t Currently allowed to be setup as the profile please format then repeat
+#- Removed IT ADMIN Successfully
+Elapsed Time : 01:18 at [2025/04/19 16:32:14]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 15.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('11')">[ 2025.04.19 16.32.14 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('12')">Samsung Bypass KG SM-A057F</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-12-data">Operation : Samsung Remove KG
+selected Mode : EDL Mode
+Waiting for Qualcomm EDL device : OK
+USB Port : Qualcomm HS-USB QDLoader 9008 (COM90)
+USB Driver : Qualcomm Incorporated qcusbser.sys v2.1.2.0  08-31-2015 [0x5C6-0x9008]
+Operation : Samsung Bypass KG
+Selected Model : SM-A057F bit8
+Downloading Loader : OK
+Connecting com port : OK
+Loading programmer file : OK
+Sending programmer file #1 : OK
+Sending nop : OK
+Sending configuration xml : OK
+Reading device info : OK
+- Model : SM-A057F
+- Manufacturer : SAMSUNG
+- Android Version : 14
+- Product : A05SNSDXX
+- Sec Patch : 2025-02-01
+- Build ID : TP1A.220624.014
+- Build Incremental : A057FXXU8CYC6
+- Display ID : UP1A.231005.007.A057FXXU8CYC6
+- Built Date : MON MAR 10 19:28:21 KST 2025
+- Platform : BENGAL
+- CPU ABI : ARM64-V8A
+- SDK Version : 34
+- IMEI : 357533649083820
+- MEID : 35753364908382
+- Serial Number : TSMKBKHEQP7
+- device internal storage : 108.59 GB | encrypted
+
+Reading Backup : &gt;
+- Reading modemst1 : OK
+- Reading modemst2 : OK
+- Reading fsc : OK
+- Reading fsg : OK
+- Reading sec_efs : OK
+- Reading efs : OK
+-&gt; Path :- 
+BackupSecurity.tsm 
+
+Bypassing Samsung kg lock : OK
+Reset factory default : OK
+Rebooting : OK
+Selected Method : QR Code 14
+Connecting Server : OK
+Please Open QRCode scanner On Your phone
+This QrCode Valid just one time [EDL+TSM APP]
+Elapsed Time : 03:14 at [2025/04/19 18:32:15]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 17.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('12')">[ 2025.04.19 18.32.15 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('13')">Xiaomi Reset Security </a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-13-data">Operation : Xiaomi Reset Security
+selected Mode : Fastboot Mode
+Wait For fastboot : OK
+Found Fastboot Serial : e07a226d0510
+Read info : 
+Product :  selene
+Serial Number :  e07a226d0510
+Bootloader Status : UNLOCKED
+Baseband :  MOLY.LR12A.R3.MP.V153.12.P41
+Version Bootloader :  SELENE-F0CA528A9-20220505181709-20220915101901
+Resetting : FAIL [
+FAILED (remote: Partition table doesnt exist)]
+Elapsed Time : 00:07 at [2025/04/19 18:32:21]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 17.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('13')">[ 2025.04.19 18.32.21 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('14')">Remove Mi-Account REDMI NOTE 8</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-14-data">Operation : Xiaomi Remove Mi-Account
+selected Mode : EDL Mode
+Waiting for Qualcomm EDL device : OK
+USB Port : Qualcomm HS-USB QDLoader 9008 (COM12)
+USB Driver : Qualcomm Incorporated qcusbser.sys v2.0.9.6  10-21-2014 [0x5C6-0x9008]
+Operation : Remove Mi-Account
+Connecting com port : OK
+Reading chip : FAILED
+Trying to connect firehose protocol : OK
+Reading device info : OK
+- Model : REDMI NOTE 8
+- Manufacturer : XIAOMI
+- Android Version : 10
+- Product : GINKGO
+- Sec Patch : 2021-02-01
+- Build ID : QKQ1.200114.002
+- Build Incremental : V12.0.4.0.QCOMIXM
+- Built Date : FRI MAR  5 13:53:39 WIB 2021
+- Miui : V12.0.4.0.QCOMIXM
+- Version : 12
+- CPU ABI : ARM64-V8A
+- SDK Version : 29
+- device internal storage : 107.19 GB | encrypted
+
+Reading Backup : &gt;
+- Reading modemst1 : OK
+- Reading modemst2 : OK
+- Reading fsc : OK
+- Reading fsg : OK
+-&gt; Path :- 
+BackupSecurity.tsm 
+
+Removing Mi-Account : 
+Reading #1 : OK
+Patching #1 : OK
+Writing #1 : OK
+#- Dont Update Your Device After remove Mi-Account
+Rebooting : OK
+Elapsed Time : 00:21 at [2025/04/19 12:32:37]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 11.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('14')">[ 2025.04.19 12.32.37 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('15')">QR Code+TSM APP SM-A065F</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-15-data">Operation : Qr Code Generator
+Current Method : TSM APP
+Operation : QR Code+TSM APP
+Selected Method : QR Code 14
+Connecting Server : OK
+Please Open QRCode scanner On Your phone
+This QrCode Valid just one time [TSM APP]
+Load Devices List : OK
+Connect ADB Device [R8YX91ZSR2T] : OK
+Model : SM-A065F
+Brand : samsung
+AP : A065FXXU1AXG8
+Android Version : 14
+CP : A065FXXU1AXG8
+CPU Abi : arm64-v8a
+CSC : XFA-XFA-XFA
+DID : 15ca8a0da96fbe11
+Hardware ID : MT6768
+SIM State : ABSENT,ABSENT
+Security Patch : 2024-07-01
+USB Config : mtp,adb
+Warranty Void Bit : 0
+IMEI : 351398418559285
+KG State : Locked
+Initialization TSM Applet : OK
+Authorization Server : OK
+Installing TSM APP : OK
+Preparing Component : OK
+KG Changing to Active : OK
+KG State Currently : Active
+Disabling Factory Reset : OK
+Disabling OTA Updates : OK
+#- Installed TSM Tool KG Bypass Application
+Elapsed Time : 04:04 at [2025/04/19 17:32:36]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 16.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('15')">[ 2025.04.19 17.32.36 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('16')">Unisoc Boot Device </a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-16-data">Operation : Unisoc Boot Device
+Waiting for Unisoc FDL device : OK
+USB Port : SPRD U2S Diag (COM9)
+USB Driver : DriverCoding Corporation sprdvcom.sys v2.0.0.108  05-25-2014 [0x1782-0x4D00]
+Current Chip : SC9863A_64
+Connect com port : OK
+Handshaking : OK
+Sending payload : OK
+Sending preloader : FAILED
+[PROTOCOL ERR] BSL_REP_VERIFY_ERROR [0x0000008b]
+Elapsed Time : 01:36 at [2025/04/19 18:33:09]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 17.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('16')">[ 2025.04.19 18.33.09 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('17')">Tecno Remove MDM TECNO BF7</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-17-data">Operation : Tecno Remove MDM
+Method : Remove FRP
+Wait For ADB Device : OK
+Load Devices List : OK
+Connect ADB Device [H6127BF701234567] : FAILED
+
+Reconnect ADB Again : 
+Load Devices List : OK
+Connect ADB Device [H6127BF701234567] : OK
+Model : TECNO BF7
+MarketName : TSSI
+Brand : TECNO
+AP : 230822V1621
+Android Version : 12
+CPU Abi : arm64-v8a
+Hardware ID : MT6761
+Security Patch : 2023-07-05
+USB Config : mtp,adb
+IMEI : Unknown
+Initialization TSM Applet : OK
+Authorization Server : OK
+Downloading Necessary Resources : OK
+Installing TSM APP : OK
+Preparing Component : OK
+KG Changing to Active : Skip
+Disabling Factory Reset : OK
+Disabling OTA Updates : OK
+#- Installed TSM Tool KG Bypass Application
+Elapsed Time : 03:31 at [2025/04/19 18:33:40]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 17.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('17')">[ 2025.04.19 18.33.40 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('18')">Samsung Remove FRP SM-A107F</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-18-data">Operation : Samsung Remove FRP
+selected Mode : Download Mode
+Waiting for samsung-dm usb device : Samsung Modem[COM14]
+Driver Info : v2.16.12.0 - 8-23-2019
+Reading Device Info : 
+Model : SM-A107F
+PRODUCT : QX63AB
+SALES : FWD
+VER : A107FXXS8CWD3
+DID : 69d452a10938
+Reading PIT : OK
+Pit saved :- 
+A107FXXS8CWD3_PIT_a926578f.pit 
+Soc : MediaTek
+Platform : MT6765
+Memory Type : eMMC
+Block Size : 512
+Patch pit[0x18cc] : OK
+Resetting to Download : OK
+Waiting for samsung-dm usb device : Samsung Modem[COM14]
+Driver Info : v2.16.12.0 - 8-23-2019
+Write pit[0x18cc] : OK
+Download persistent[0x80000] : OK
+Rebooting device : OK
+#- FRP Unlocked Done!
+Rebooting device : OK
+Elapsed Time : 00:10 at [2025/04/19 19:04:43]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 18.12</span>
+                                <span class="item_date item_detail" onclick="OpenLog('18')">[ 2025.04.19 19.04.43 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('19')">MTK Boot Device </a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-19-data">Operation : MTK Boot Device
+Waiting for Brom/PL device : OK
+USB Port : MediaTek USB Port (COM3)
+USB Driver : MediaTek Inc. wdm_usb.sys v10.0.26100.2454  06-21-2006 [0xE8D-0x3]
+Protocol Config : MTK NEW
+Send cmd code : OK
+Read chip : FAILED
+[DATA ERR] Unexpected response: 0xfe
+Elapsed Time : 00:02 at [2025/04/19 17:34:18]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 16.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('19')">[ 2025.04.19 17.34.18 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('20')">Wipe Data (huawei) </a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-20-data">Operation : Wipe Data (huawei)
+Waiting for Brom/PL device : OK
+USB Port : MediaTek PreLoader USB VCOM (Android) (COM25)
+USB Driver : MediaTek Inc. usbser.sys v3.0.1504.0  01-22-2015 [0xE8D-0x2000]
+Protocol Config : MTK OLD
+Connecting to BROM : Handshake fail!
+Preloader protected try reconnect and repeat process!
+boot it again to brom mode
+Elapsed Time : 01:50 at [2025/04/19 10:34:21]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 09.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('20')">[ 2025.04.19 10.34.21 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('21')">Android Fix Install Apks TECNO BG6m</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-21-data">Operation : Android Fix Install Apks
+Load Devices List : OK
+Connect ADB Device [ASALE374BA000094] : OK
+Model : TECNO BG6m
+MarketName : tssi
+Brand : TECNO
+AP : 250317V1813
+Android Version : 14
+CP : 4G_MODEM_22B_W24.26.3_P7|qogirl6_modem
+CPU Abi : armeabi-v7a
+Carrier ID : Unknown
+Hardware ID : UMS9230_BG6M_GO
+SIM State : ABSENT,ABSENT
+Security Patch : 2025-02-05
+USB Config : mtp,adb
+IMEI : Unknown
+Initialization TSM Applet : OK
+Authorization Server : OK
+Preparing Component : OK
+#- Fixed Install Apps Successfully
+Elapsed Time : 00:15 at [2025/04/19 15:34:50]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 14.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('21')">[ 2025.04.19 15.34.50 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('22')">Read Info EDL DUB-LX1</a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-22-data">Operation : Read Info EDL
+Waiting for Qualcomm EDL device : OK
+USB Port : ?Qualcomm HS-USB QDLoader 9008 (COM79)?
+USB Driver : Qualcomm Incorporated qcusbser.sys v2.1.1.2  03-19-2014 [0x5C6-0x9008]
+Connecting com port : OK
+Reading chip : OK
+HW_ID : 0009a0e100150000
+MSM_ID : 0009a0e1 - qrb516
+OEM_ID : 0x0015 - Huawei
+MODEL_ID : 0x0065
+PK_HASH : 6bc369511da9cadb3a7af61574f89db385003d6241bdd1ff573dba61bf6ae119
+Loading programmer file : OK
+Downloading : OK
+Sending programmer file #2 : OK
+Sending nop : OK
+Sending configuration xml : OK
+Reading GUID Partition Table : OK
+Reading device info : OK
+- Model : DUB-LX1
+- Manufacturer : Huawei
+- Android Version : 8.1.0
+- Build Number : DUB-LX1820181C185
+- Sec Patch : 2019-06-01
+- Build ID : OPM1.171019.011
+- Display ID : SYSTEM 8.2.0.036(05T4)
+- Built Date : WED JUL 17 02:03:12 CST 2019
+- CPU ABI : ARM64-V8A
+- device internal storage : 53.65 GB | encrypted
+Elapsed Time : 00:27 at [2025/04/19 18:35:24]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 17.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('22')">[ 2025.04.19 18.35.24 ]</span>
+
+                            </div>
+                              
+                            <div class="mq-file-item inline">
+                                
+                                <a href="#" onclick="OpenLog('23')">Wipe Data (MasterClear-FD) </a>
+                                <!-- <span class="badge bg-blue">FEATURED</span> -->
+                                <span style="display: none;" class="log-23-data">Operation : Wipe Data (MasterClear-FD)
+Waiting for Brom/PL device : OK
+USB Port : MediaTek USB Port_V1632 (COM4)
+USB Driver : MediaTek Inc. wdm_usb.sys v10.0.19041.3636  06-21-2006 [0xE8D-0x3]
+Protocol Config : MTK V6 XIAOMI - REDMI 14C HYPEROS
+Chipset ID : MT6789 Helio G99
+Chip Info : 0x1208 0x8a00 0xca00 0x0
+Active Sec Flag : SBC,SLA,DAA
+Elapsed Time : 00:12 at [2025/04/19 12:31:10]
+#- TSM TOOL PRO v2.0.4 #Build:2025.04.09 11.42</span>
+                                <span class="item_date item_detail" onclick="OpenLog('23')">[ 2025.04.19 12.31.10 ]</span>
+
+                            </div>
+                             
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <div class="slideshow-container" style="height: 637px;"> 
+        <!-- style=""  -->
+
+        <div class="mySlides fade">
+            <!-- <div class="numbertext">1 / 5</div> -->
+            <img loading="lazy" src="/static/imgs/imgs/1.jpg" style="width:100%" alt="img 1">
+            <!-- <div class="text">Caption Text</div> -->
+        </div>
+
+        <div class="mySlides fade">
+            <!-- <div class="numbertext">2 / 5</div> -->
+            <img loading="lazy" src="/static/imgs/imgs/2.jpg" style="width:100%" alt="img 2">
+            <!-- <div class="text">Caption Two</div> -->
+        </div>
+
+        <div class="mySlides fade">
+            <!-- <div class="numbertext">3 / 5</div> -->
+            <img loading="lazy" src="/static/imgs/imgs/3.jpg" style="width:100%" alt="img 3">
+            <!-- <div class="text">Caption Three</div> -->
+        </div>
+
+        <div class="mySlides fade">
+            <!-- <div class="numbertext">4 / 5</div> -->
+            <img loading="lazy" src="/static/imgs/imgs/4.jpg" style="width:100%" alt="img 4">
+            <!-- <div class="text">Caption Four</div> -->
+        </div>
+
+        <div class="mySlides fade">
+            <!-- <div class="numbertext">5 / 5</div> -->
+            <img loading="lazy" src="/static/imgs/imgs/5.jpg" style="width:100%" alt="img 5">
+            <!-- <div class="text">Caption Five</div> -->
+        </div>
+
+        <div class="mySlides fade">
+            <!-- <div class="numbertext">5 / 5</div> -->
+            <img loading="lazy" src="/static/imgs/imgs/6.jpg" style="width:100%" alt="img 6">
+            <!-- <div class="text">Caption Five</div> -->
+        </div>
+
+    </div>
+    <br>
+    <div class="bottomView">
+        <button class="prev" onclick="ShowSlide(0)">&#10094;</button>
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <button class="next" onclick="ShowSlide(1)">&#10095;</button>
+    </div>
+
+    <br>
+    <div class="dl-btn bottom-icons">
+        <a class="waves-effect waves-light btn" onclick="window.open('/login')"><i class="material-icons left">login</i>login</a>
+    </div>
+    <br>
+    <div class="dl-btn bottom-icons">
+        <a class="waves-effect waves-light btn" onclick="window.open('/download')"><i class="material-icons left">download</i>Download</a>
+    </div>
+    
+    <br>
+    <div class="dl-btn bottom-icons">
+        <a class="waves-effect waves-light btn" target="_blank" href="https://speedify.com/download/"><i class="material-icons left">download</i>Speedify VPN Download</a>
+    </div>
+    
+    <br>
+    <div class="dl-btn bottom-icons">
+        <a class="waves-effect waves-light btn" onclick="window.open('/sellers')"><i class="material-icons left">shopping_cart</i>Buy Now</a>
+    </div>
+    
+    <br>
+    <div class="dl-btn bottom-icons">
+        <a class="waves-effect waves-light btn" onclick="window.open('/tutorials')"><i class="material-icons left">bookmarks</i>Tutorials</a>
+    </div>
+    
+    <br>
+    <div class="container">
+        <div class="user-info style-1">
+            <div class="info-item">
+                <div class="info-label"><i class="fas fa-cloud-download-alt info-icon"></i>Downloads</div>
+                <div class="info-value">406473</div>
+            </div>
+        </div>
+
+        <div class="user-info style-1">
+            <div class="info-item">
+                <div class="info-label"><i class="fas fa-users info-icon"></i>Customers</div>
+                <div class="info-value">61351</div>
+            </div>
+        </div>
+
+        <div class="user-info style-1">
+            <div class="info-item">
+                <div class="info-label"><i class="fas fa-mobile-alt info-icon"></i>Supported Models</div>
+                <div class="info-value">2840+</div>
+            </div>
+        </div>
+
+
+         
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V2.0.7 | 2025/05/06 18:17:48
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM TOOL PRO V2.0.7
+Added Hot Motorola Preloader Auth:
+* supported models:
+  • Remove FRP
+  • Factory reset
+  • Read/Write Scatter
+  • Read/Write RPMB
+  
+* supported models:
+  • Moto G23 (XT2333-1)
+  • Moto G24 (XT2423-1)
+  • Moto G24 Power (XT2425-2)
+
+
+Added Hot Xiaomi Preloader Auth:
+* supported models:
+  • Remove FRP
+  • Factory reset
+  • Read/Write Scatter
+  • Read/Write RPMB
+  
+* supported models:
+  • Redmi Note 13 5G HyperOS
+  • Redmi Note 13R Pro HyperOS
+  • POCO X6 Neo 5G HyperOS
+
+Added Hot Huawei EDL Models:
+* supported models:
+  • Remove FRP
+  • Factory reset
+  • Read/Write XML
+  • Remove Huawei ID
+  
+* supported models:
+  • Honor X7B (CLK-LXX)
+  • Honor X7C (ALT-LXX)
+  • Honor X9A
+
+
+
+Updated Auto Active Volte Qualcomm Via Network Adapter
+</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V2.0.6 | 2025/04/30 12:24:55
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>Added Remove Anti Crack Transsion [Infinix-Tecno-Itel]
+  • Free without Credit
+  • Based MTK Devices
+  • Official Server base service
+  • Anytime may disabled by transsion Company!
+
+Added New Updates of Samsung 2025 Next Models [EDL]:-
+ - Remove KG [Beta in new patches]
+ - Remove FRP
+ - Factory reset
+ - Fix MDM Can&#39;t Download
+ - Read/Write XML Firmware
+ - Change SN
+
+* supported models:
+  • Galaxy A52 5G (SM-A526B) bitC
+  • Galaxy A80 (SM-A805N) bit2
+  • Galaxy A90 (SM-A905N) bit2
+  • Galaxy Z Flip3 (SM-F711B) bitC
+  • Galaxy Z Flip5 (SM-F731B) bit5
+  • Galaxy Z Fold3 (SM-F926B) bitB
+  • Galaxy Z Fold3 (SM-F926U) bitA
+  • Galaxy Z Fold4 (SM-F936U) bit8
+  • Galaxy Z Fold5 (SM-F9460) bit7
+  • Galaxy S20 FE 5G (SM-G781V) bitI
+  • Galaxy S20 5G (SM-G981N) bit8
+  • Galaxy S20+ 5G (SM-G986N) bit8
+  • Galaxy S20 Ultra 5G (SM-G988N) bit8
+  • Galaxy S21 FE 5G (SM-G990B2) bitB
+  • Galaxy S21 FE 5G (SM-G990U2) bitD
+  • Galaxy S23 (SM-S911N) bit6
+  • Galaxy Note8 (SM-SCV45) bit1
+  • Galaxy Tab A 8.0 (SM-T385M) bit3
+  • Galaxy Tab Active Pro (SM-T547U) bit9
+  • Galaxy Tab A 10.5 (SM-T597V) bit5
+  • Galaxy Tab S4 (SM-T837T) bit6
+  • Galaxy Tab Active Pro (SM-T878U) bit9
+  • Galaxy Tab S7+ (SM-T975) bit7
+
+Added hot Samsung Preloader/Brom V6
+* supported models:
+  • Remove FRP [Test Point]
+  • Factory reset [Test Point]
+  
+* supported models:
+  • Galaxy A06 (SM-A066B) bit1
+  • Galaxy F16 5G (SM-E166P) bit1
+  • Galaxy M06 (SM-M066B) bit1
+  • Galaxy M16 5G (SM-M166P) bit1
+
+Added New Method to Bypass MDM Transsion Infinix-Tecno-Itel
+  • Supported SPRD Chip Via flash mode
+  • works to patch security the mobile without trigger anti crack
+  • select remove MDM -&gt; Sprd Flash mode -&gt; After success enable adb then use adb method 1 or tsm app
+
+
+Added Read Anti crack state Transsion Infinix-Tecno-Itel Adb Mode/Brom mode
+  • when you see it enabled in your phone beware of any changes on your phone including
+  • -erase/edit security paritions
+
+
+Fixed Failed to load Kirin Data
+Updated Bypass Mi-Account EDL Mode [Unlocked BL Devices]
+
+
+#TSM_TOOL #TSMPRO #TSM #ANTICRACK #ANTI_CRACK #ENABLEADB #MDM_TECNO #MDM_INFINIX #MDM_ITEL</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V2.0.5 | 2025/04/23 13:11:26
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM TOOL PRO V2.0.5
+
+Added hot Samsung Preloader/Brom V6
+* supported models:
+  • Remove FRP [Test Point]
+  • Factory reset [Test Point]
+  
+* supported models:
+  • Galaxy A15 (SM-A155M) bit5
+  • Galaxy A15 (SM-A156P) bit5
+
+
+Added Oppo/Realme/Tecno/LT Preloader/Brom V6
+* supported models:
+  • Remove FRP
+  • Factory reset
+	  
+	* LT New supported models:
+	  • M50s [LT_S33]
+	  • M60 [LT_9902]
+
+	* Oppo/Realme New Chips:
+	  • Oppo/Realme V1
+	  • Oppo/Realme V2
+	  Note : this chips include many models includes
+		• Oppo A3 Pro
+		• Oppo RENO 8T
+		• Realme 10
+		• Realme 11
+		• Realme 12x
+		and more soon will be listed directly	
+
+	* TCL New supported Chips:
+	  • TCL V1 D6100
+	  • TCL V2 D6100
+	  Note : this chips include many models includes
+		• T613
+		and more soon will be listed directly
+
+
+
+Added New Updates of Samsung 2025 Next Models [EDL]:-
+ - Remove KG [Beta in new patches]
+ - Remove FRP
+ - Factory reset
+ - Fix MDM Can&#39;t Download
+ - Read/Write XML Firmware
+ - Change SN
+
+* supported models:
+  • Galaxy A05 (SM-A057G) bit6
+  • Galaxy A05 (SM-SM-A057M) bit8
+  • Galaxy A36 5G (SM-A366B) bit1
+  • Galaxy A52 (SM-A525F) bitB
+  • Galaxy A52 (SM-A525M) bitB
+  • Galaxy F14 (SM-E145F) bit7
+  • Galaxy S22 (SM-S901U) bit8
+  • Galaxy S22+ (SM-S906U) bit8
+  • Galaxy S22 Ultra (SM-S908U) bit8
+  • Galaxy M44 5G (SM-M446K) bit5
+  • Galaxy Note10+ 5G (SM-N9760) bit6
+  • Galaxy Tab A 8.0 (SM-T387W) bit3
+  • Galaxy Tab A7 Lite (SM-X218B) bit6
+  • Galaxy Tab S5e (SM-T720) bit3
+  • Galaxy Tab S3 (SM-T820) bit3
+  • Galaxy Tab S3 (SM-T825) bit3
+  • Galaxy Tab S3 (SM-T825N) bit3
+  • Galaxy Tab S3 (SM-T825Y) bit3
+  • Galaxy Tab A7 Lite (SM-X216N) bit6
+  • Galaxy Tab S9 (SM-X9180) bit5
+  • Galaxy Z Flip (SM-F700U) bit8
+  • Galaxy Z Flip4 (SM-F721U) bit8
+  • Galaxy Z Fold4 (SM-F936U) bit8
+  
+  
+Added New Models of Nothing Next Models [EDL]:-
+ - Remove FRP
+ - Factory reset
+ - Read/Write XML Firmware
+
+* supported models:
+  • OnePlus 11 CPH2447
+  • OnePlus 11 PHB110 
+  • OnePlus 11R 5G CPH2487 
+  • OnePlus 12 CPH2573 
+  • OnePlus 12R CPH2611
+
+Added NEW OPPO Devices Via EDL Mode[Beta]
+ - Remove FRP
+ - Factory reset
+ - Read/Write XML Firmware
+
+
+* supported Chips:
+  • SDM665 eMMC/UFS
+  • SDM710 eMMC/UFS [Only FRP+FactoryReset] [Manually Chip+Mem Type]
+
+
+* supported Models:
+  • A11 (PCHM10)
+  • A11N (PCHM00)
+  • A11X (PCHM30)
+  • A72 (CPH2067)
+  • A92 (CPH2059)
+  • Oppo A5 2020 (CPH1931)
+  • Oppo A9 2020 (CPH1937)
+  • Realme 5 (RMX1911)
+  • Realme 5i (RMX2030)
+  • Realme 5s (RMX1925)
+  • Realme Narzo 20A (RMX2050)
+
+Updated Remove Mi Account Algorithm MTK
+Updated Remove Mi Account to work with both MTK [OLD-NEW] Not supported erofs
+Updated Repair IMEI Flash Mode Method to work with both MTK [OLD-NEW]
+Updated Exploit FRP MTP-Browser Bypass [Android Open Accessory]
+Fixed Samsung Remove KG Method 4</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V2.0.4 | 2025/04/09 15:14:38
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>Added hot Samsung Preloader/Brom V6
+* supported models:
+  • Remove FRP [Test Point]
+  • Factory reset [Test Point]
+  
+* supported models:
+  • Galaxy A24 (SM-A245F) bit9
+  • Galaxy A24 5G (SM-A245M) bit9
+  • Galaxy A15 5G (SM-A156M) bit2
+  • Galaxy A15 5G (SM-A156N) bit2
+  • Galaxy A15 5G (SM-A156W) bit5
+  • Galaxy A15 5G (SM-A156W) bit5
+  • Galaxy A16 5G (SM-A166P) bit3
+  • Galaxy F06 (SM-E066B) bit1
+  • Galaxy F15 5G (SM-E156B) bit5
+  • Galaxy M55 5G (SM-G556B) bit5
+  • Galaxy M15 5G (SM-M156B) bit5
+  • Galaxy M15 5G (SM-M156B) bit5
+  • Galaxy A16 (SM-S167VL) bitB
+  • Galaxy Tab S9 (SM-X820F) bit2
+  • Galaxy Tab S9+ (SM-X826B) bit2
+  • Galaxy Tab S9 Ultra (SM-X920F) bit2
+  • Galaxy Tab S9 Ultra (SM-X926B) bit2
+
+
+Added New Updates of Huawei Next Models [EDL]:-
+ - Remove FRP
+ - Factory reset
+ - Read/Write XML Firmware
+
+* supported models:
+  • Honor 70 (FNE-AN00, FNE-NX9)
+  • Honor 80 (ANN-AN00) 2
+  • Honor 80 (ANN-AN00)
+  • Honor 80Pro (ANP-AN00)
+  • Honor Magic3 (ELZ-ANXX)
+  • Honor Play 30 (VNE-AN00) [1]
+  • Honor Play 30 (VNE-AN00) [2]
+  • Honor Play Tab 2 8.0 Wi-Fi (KOB-W09)
+  • Honor X30 (ANY-AN00)
+  • Honor X40 (RMO-AN00)
+  • Honor X40GT (ADT-AN00)
+  • Huawei Mate 50 Pro (DCO-AL00, DCO-LX9)
+  • Huawei Mate PadPro (GOT-WXX,GOT-ALXX)
+  • Huawei Mate50 (CET-AL00, CET-LX9)
+  • Huawei Mate50
+  • Huawei MediaPad T3 10(BZA-W00)
+  • Huawei MediaPad T3 8(BZK-W00)
+  • Huawei Nova 10 (ALH-BD00)
+  • Huawei Nova 10 (NCO-AXX, NCO-LXX)
+  • Huawei Nova 10 SE (BNE-LXX,BNE-ALXX)
+  • Huawei Nova 9 SE (FIO-BD00)
+  • Huawei Nova 9 SE (JLN-LXX, JuliaQN-LXX, FIO-BXX)
+  • Huawei NOVA Y90 CTR-LXX
+  • Huawei Nova9 Pro (RTE-AL00, Hebe-BD00)
+  • Huawei P60 Pro (MNA-AL00, MNA-LX9)
+  • Huawei P60
+  • Huawei P80
+
+Added LT Preloader/Brom V6
+* supported models:
+  • Remove FRP
+  • Factory reset
+  
+* supported models:
+  • M50 [LT_9701]
+
+
+Added Infinix Preloader/Brom V6
+* supported models:
+  • Remove FRP
+  • Factory reset
+  
+* supported chips:
+  • MT6789
+  • MT6835
+  • MT6855
+  • MT6895
+  • MT6896
+  • MT6983
+
+Added It Admin Remove Via ADB Mode
+* supported methods:
+  • Device Controller
+  • Custom Profile #1
+  • Custom Profile #2
+  
+* supported brands:
+  • Samsung
+  • ZTE
+  • Motorol
+  • Xiaomi
+  • Oppo
+  • Realme
+  • Vivo
+  • Huawei
+  etc... most brands are supported
+  
+  Go to [General Tab -&gt; ADB Tools]
+
+
+Added Reboot to Meta [Infinix-Tecno-Itel]
+Added Remove MDM [Infinix-Tecno-Itel] [ADB MODE] 2 methods {Beta}
+
+SOME UPDATES ON MTK PROTOCOLS
+</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V2.0.3.1 | 2025/04/01 19:23:36
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>improvements and optimization update</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V2.0.3 | 2025/03/28 11:19:30
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM TOOL PRO V2.0.3
+
+Eid mubark, Happy Eid
+Passion drives amateurs, responsibility drives professionals. 👌🏻
+
+Enjoy the amazing 50% OFF! all Plans
+
+Don&#39;t miss out on this limited-time offer.
+
+Added World First Sec patch and hot Samsung Preloader/Brom V6
+* supported models:
+  • Remove FRP [Test Point]
+  
+* supported models:
+  • Galaxy A15 5G (SM-A156U) bit5
+
+
+Fixed Samsung New FRP Method For next models
+* supported models:
+  • Galaxy A15 (SM-A155F) bit5
+  • Galaxy A15 (SM-A155M) bit5
+  • Galaxy A15 5G (SM-A156B) bit5
+  • Galaxy A15 5G (SM-A156U) bit3
+  • Galaxy A16 (SM-A165F) bit2
+  • Galaxy A16 5G (SM-A166P) bit3
+  • Galaxy A24 (SM-A245F) bit6
+  • Galaxy Tab A9 (SM-X110) bit4
+  • Galaxy Tab A9+ (SM-X115) bit3
+
+Added Factory reset MTK V6 Models [2 methods]
+	* if not work first one use second method
+</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V2.0.2 | 2025/03/27 05:21:27
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre></pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V2.0.1 | 2025/03/23 17:56:46
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM TOOL PRO V2.0.1
+
+Added Honor Preloader AUTH/BROM - MT6768
+  • supported models:
+  • Remove FRP
+  • Factory Reset
+  • Read Scatter
+  • Write Scatter
+
+* supported models:
+  • Honor X6b (JDY-LX1)
+  • Honor X6b (JDY-LX2)
+  • Honor Play 20 Pro (HJC-L29)
+  • Honor Play 20 Pro (HJC-LX2)
+
+
+Improved And Updated
+- updated MTK Protocol
+- fixed crash issue</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V2.0.0 | 2025/03/22 23:19:10
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM TOOL PRO V2.0.0
+
+Added New Updates of Samsung 2025 Next Models [EDL]:-
+ - Remove KG [Beta in new patches]
+ - Remove FRP
+ - Factory reset
+ - Fix MDM Can&#39;t Download
+ - Read/Write XML Firmware
+ - Change SN
+
+* supported models:
+  • Galaxy A23 (SM-A235M) bitB
+  • Galaxy A42 (SM-A4260) bit6
+  • Galaxy A52 (SM-A5260) bitB
+  • Galaxy A52s (SM-A528N) bit6
+  • Galaxy Z Flip3 (SM-F7110) bitA
+  • Galaxy S10 Lite (SM-G770U) bit9
+  • Galaxy S20 FE (SM-G781W) biti
+  • Galaxy S7 Edge (SM-G935A) bitB
+  • Galaxy Note10+ (SM-SM-N9750) bit6 [WorldFirst]
+  • Galaxy S20 (SM-G9810) bitC
+  • Galaxy Note20 (SM-N981N) bit7
+  • Galaxy Note20 Ultra (SM-N986N) bit7
+
+
+Added Honor Preloader AUTH/BROM - MT6765
+  • supported models:
+  • Remove FRP
+  • Factory Reset
+  • Read Scatter
+  • Write Scatter
+
+* supported models:
+  • Honor X5 (VNA-LX2)
+  • Honor X5 (VNA-LX3)
+  • Honor X5b (GFY-LX2)
+  • Honor X5 Plus (WOD-LX1)
+  • Honor X5 Plus (WOD-LX2)
+  • Honor X5 Plus (WOD-LX3)
+  • Honor X5b Plus (GFY-LX2P)
+  • Honor X6 (VNE-LX1)
+  • Honor X6 (VNE-LX2)
+  • Honor X6 (VNE-LX3)
+  • Honor X6a (WDY-LX1)
+  • Honor X6a (WDY-LX2)
+  • Honor X6 Plus
+  • Honor X7a (RKY-LX1)
+  • Honor X7a (RKY-LX2)
+  • Honor X7a (RKY-LX3)
+  • Honor 8a Pro
+  • Honor 9A
+  • Honor 8A
+  • Honor 8A Prime
+  • Honor Play 8A
+
+
+Added TCL Qualcomm Models via EDL MODE:-
+  • Remove FRP
+  • Read Firmware
+  • Write Firmware
+  • Factory reset
+
+Next Models
+  • 4056L
+  • 4056S
+  • 5002
+  • 5039
+  • 5053
+  • 5062W
+  • 5062Z
+  • 5102
+  • 5102P
+  • 9048S
+  • 9049L
+  • 9050S
+  • 9198S
+  • 9296Q
+  • MT43
+  • MT45
+  • T671
+  • T768O
+  • T768S
+  • T770
+  • T774H
+  • T775H
+  • T780H
+  • T781
+  • T781S
+  • T782
+  • T782P
+  • T790
+  • T790S
+  • T790W
+  • T790Z
+  • T799
+  • T810
+
+
+Added Exploit FRP MTP-Browser Bypass [Android Open Accessory]
+  • Supported Many Brands
+  • Just One Click
+  • No need manuall drivers 
+  • auto install/uninstall filter ports
+
+
+Improved And Updated
+- updated EDL Protocol
+- updated Port Detection
+</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.9.1 | 2025/03/16 13:21:33
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>Improved and updated version
+- Updated Remove FRP MTK Brom/Preloader includes Honor Preloader Auth
+- Updated Samsung Change SN MTP Mode
+- Updated Samsung Remove FRP Test Mode
+- Updated Port Detection Algorithm
+- Some minor bugs fixed
+</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.9 | 2025/03/12 16:19:24
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM-TOOL PRO V1.1.9 Released Date 2025-03-10
+
+Added New Updates of Samsung 2025 Next Models [EDL]:-
+ - Remove KG [Beta in new patches]
+ - Remove FRP
+ - Factory reset
+ - Fix MDM Can&#39;t Download
+ - Read/Write XML Firmware
+
+  • Galaxy A52 (SM-A526B) bitB
+  • Galaxy M23 (SM-E236B) bit9
+  • Galaxy Tab S5e (SM-T727A) bit6
+  • Galaxy Tab S7 FE (SM-T736B) bit7
+  • Galaxy Tab S9 Ultra (SM-X818U) bit5
+  • Galaxy Z Flip3 (SM-F711B) bitB
+  • Galaxy Z Flip3 (SM-F711U) bitB
+  • Galaxy Z Flip5 (SM-F731B) bit4
+  • Galaxy Z Flip6 (SM-F741B) bit2
+  • Galaxy Z Fold2 (SM-F956B) bit2
+  • Galaxy S20 FE (SM-G7810) bitE
+  • Galaxy S7 Edge (SM-G935A) bitB
+  • Galaxy S9+ (SM-G9650) bit9
+  • Galaxy Note10 (SM-N9700) bit6
+  • Galaxy Note10+ (SM-N9750) bit6
+  • Galaxy A23 (SM-S237VL) bitA
+  • Galaxy S22 (SM-S901N) bit6
+  • Galaxy S22+ (SM-S906N) bit6
+  • Galaxy S23 (SM-S911N) bit5
+  • Galaxy S23 Ultra (SM-S9280) bit4
+  • Galaxy S22 Ultra (SM-S908E) bitC
+  • Galaxy S23+ (SM-S918B) bit8
+  • Galaxy Tab A8 (SM-X210) bit6
+  • Galaxy Tab A8 (SM-X216B) bit6
+  • Galaxy A71 (SM-A715W) bit7
+  • Galaxy S20 FE (SM-G780G) bitE
+  • Galaxy S20 (SM-G981U) bitC
+  • Galaxy Note9 (SM-N9600) bit9
+  • Galaxy Tab S7 FE (SM-T738U) bitA
+  • Galaxy Tab S8+ (SM-X800) bit9
+  • Galaxy Tab S9 (SM-X710) bit5
+
+Added Honor Preloader AUTH - MT6833 [Dimensity 700|810|6020|6080]
+  • supported models:
+  • Remove FRP
+  • Factory Reset
+  • Read Scatter
+  • Write Scatter
+
+* supported models:
+  • Honor 200 Lite (LLY-NX1)
+  • Honor 90 Lite (CRT-NX1, CRT-N31)
+  • Honor 90 Smart (CLK-NX1, CLK-N31, CLK-NX3)
+  • Honor X40i (DIO-XXX)
+  • Honor X50i (CRT-XXX)
+  • Honor X50i+ (LLY-XXX)
+  • Honor 50 Plus (CLK-XXX)
+  • Honor 40 Plus (RKY-XXX)
+  • Honor Plat 7t (RKY-XXX)
+  • Honor Play 8t (CLK-XXX)
+
+
+Added support Xiaomi Proloader Auth
+  • Poco C75 (lake)
+  • Poco C61 (blue)
+  • Redmi 14C (lake)
+  • Redmi 3A (blue)
+  • Redmi A3 Pro (lake)
+
+
+Added Xiaomi EDL Bypass Authorization
+Models affected include, but are not limited to:
+  • Black Shark 4 (penrose)
+  • Black Shark 4S (penrose)
+  • Black Shark 4 Pro (kaiser)
+  • Black Shark 4S Pro (kaiser)
+  • Black Shark 5 RS (kaiser)
+  • Black Shark 5 (patriot)
+  • Black Shark 5 Pro (katyusha)
+  • Civi (Mona)
+  • Civi 1s (Zijin)
+  • Mi Note 10 (tucana)
+  • Mi Note 10 Lite (Toco)
+  • Mi 8 Lite (platina)
+  • Mi 9 (cepheus)
+  • Mi 9 Explorer (cepheus)
+  • Mi 9T (davinci)
+  • Mi 9T Pro (raphael)
+  • Mi 10 (umi)
+  • Mi 10T 5G (apollo)
+  • Mi 10T Pro (apollo)
+  • Mi 11 (venus)
+  • Mi 11 Lite (courbet)
+  • Mi 11 Lite 5G (lisa)
+  • Mi 11 Pro (star)
+  • Mi 11 Ultra (star)
+  • Mi 11i (star)
+  • Mi 11X (alioth)
+  • Mi 12 Lite (Taoyao)
+  • Mi A2 (jasmine)
+  • Poco M2 Pro (gram)
+  • Poco F3 (alioth)
+  • Poco F3 Pro (haydn)
+  • Poco X3 NFC (surya)
+  • Poco X3 Pro (chopin)
+  • Poco X5 Pro (Redwood)
+  • Redmi 1S W (Armani)
+  • Redmi 2 (WT88047)
+  • Redmi 3 Prime (Ido)
+  • Redmi 3S (Land)
+  • Redmi 4 (Prada)
+  • Redmi 4 Prime (Markw)
+  • Redmi 4A (Rolex)
+  • Redmi 5 (Rosy)
+  • Redmi 5 Plus (Vince)
+  • Redmi 4X (Santoni)
+  • Redmi 7A (pine)
+  • Redmi 7 (ONC)
+  • Redmi 8 (olive)
+  • Redmi 8A (olivelite)
+  • Redmi 9 Power (Lime)
+  • Redmi 9T (Lime)
+  • Redmi K20 (Davinci)
+  • Redmi 10 (fog)
+  • Redmi 10 Power (fog)
+  • Redmi 10C (fog)
+  • Redmi Note 5 AI Dual Camera
+  • Redmi Note 5 Pro (whyred)
+  • Redmi Note 6 Pro (tulip)
+  • Redmi Note 7 (lavender)
+  • Redmi Note 7S (lavender)
+  • Redmi Note 7 Pro (Violet)
+  • Redmi Note 8 (ginkgo)
+  • Redmi Note 8T (willow)
+  • Redmi Note 9 Pro (joyeuse)
+  • Redmi Note 9 Pro Max (excalibur)
+  • Redmi Note 9S
+  • Redmi Note 10 Lite (curtana)
+  • Redmi Note 10 Pro (chopin)
+  • Redmi Note 10 (mojito)
+  • Redmi Note 11 (spes)
+  • Redmi Note 11 NFC (spesn)
+  • Redmi Y3 (onc)
+  • Redmi K20 (davinci)
+  • Redmi K20 Pro (raphael)
+  • Redmi K30S (apollo)
+  • Redmi K40 (alioth)
+  • Redmi K40 Pro (haydn)
+  • Redmi K40 Pro+ (haydn)
+  • Redmi S2 (Ysl)
+  • Redmi Y1 (Lite)
+  • Redmi Y1 (Ugg)
+
+Added Direct Unlock - Regional Lock Realme
+  • for all Realme Tiger T612/T616 models.
+  • Latest security patch, one-click safe unlock,
+  • no risk. Not related to RPMB.
+  
+Tested devices:  
+  • Realme 11
+  • Realme C30
+  • Realme C33 
+  • Realme C31
+  • Realme C33 2023
+  • Realme C35
+  • Realme C53
+  • Realme C51
+  • Realme C51s
+  • Realme C53 (India)
+  • Realme C61 
+  • Realme C61 (India)
+  • Realme C63
+  • Realme Narzo N63
+  • Realme Narzo 60
+  • Realme Narzo N53
+  • Realme Narzo 50i Prime
+  • Realme Narzo 50A Prime 
+  • Realme Narzo N61
+  • Realme Note 50
+  • Realme Note 60x
+  • Realme Note 60
+  • Realme Pad Mini
+
+
+Added Mobicel Next Models
+  • Clik Plus
+  • Fendy Plus
+  • Legend
+  • MX2
+  • MX2 Plus
+  • Oreo
+  • Pulse
+  • PX10
+  • PX9
+  • R7
+  • Switch Plus
+  • X4
+  • Z3
+  • VX 20
+  • PX10
+  • V4
+  • PX12
+  • Epic Pro 1
+  • F40
+  • F50
+  • IX
+  • IX Pro
+  • P5
+  • RX
+  • RX Pro
+  • VX18
+  • Z4
+  • Berry Pro
+  • R1 Plus
+  • RX17
+  • Titan
+  • Vibe
+
+
+Added Stylo Models
+  • Stylo AIR
+  • Stylo Atlas
+  • Stylo BRAVE
+  • Stylo SWIFT_4G
+  • Stylo ORION Tab 8
+  • Stylo ORION Plus Tab 10
+  • Stylo Saturn
+  • Stylo Universe
+  • Stylo Stylo Fain
+
+Fixed Minor bugs
+Updated Disable OTA Updates Samsung and xiaomi
+Updated Setup TSM App
+Fixed Terminated adb connection
+Fix Security Policy Restricts Messages Samsung Devices[Generic Tab]
+</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.8 | 2025/02/25 21:06:43
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>
+Added New Updates of Samsung 2025 Next Models [EDL]:-
+ - Remove KG
+ - Remove FRP
+ - Factory reset
+ - Change SN
+ - Fix MDM Can&#39;t Download
+ - Read/Write XML Firmware
+
+ • Galaxy A23 5G SM-A236M bit9
+ • Galaxy A23 5G SM-A236U bit9
+ • Galaxy A42 5G SM-S426DL bit9
+ • Galaxy A51 5G UW SM-A516V bitA
+ • Galaxy A70 SM-A705GM bit5
+ • Galaxy A71 5G SM-A716V bit9
+ • Galaxy A72 SM-A725F bitA
+ • Galaxy A73 SM-A736B bitA
+ • Galaxy F14 4G SM-E145F bit6
+ • Galaxy F23 SM-E236B bit8
+ • Galaxy Fold SM-F900F bit7
+ • Galaxy M01 SM-M015F bit6
+ • Galaxy M42 5G SM-M426B bit9
+ • Galaxy M52 5G SM-M526B bit6
+ • Galaxy M52 5G SM-M526BR bit6
+ • Galaxy M55 SM-M556B bit4
+ • Galaxy Note 20 Ultra 5G SM-N9860 bitC
+ • Galaxy Note20 5G SM-N981U bitB
+ • Galaxy Note20 Ultra 5G SM-N986U bitB
+ • Galaxy Quantum 2 5G SM-A826S bit6
+ • Galaxy S20 5G SM-G981V bitC
+ • Galaxy S20 FE 5G SM-G781B bitH
+ • Galaxy S20 FE 5G SM-G781N bit9
+ • Galaxy S20 Ultra 5G SM-G988U bitC
+ • Galaxy S20+ 5G SM-G9860 bitC
+ • Galaxy S20+ 5G SM-G986N bit6
+ • Galaxy S20+ 5G SM-G986U bitC
+ • Galaxy S21 5G SM-G9910 bitB
+ • Galaxy S21 5G SM-G991U1 bitE
+ • Galaxy S21 FE SM-G990BDS bitA
+ • Galaxy S21 FE 5G SM-G9900 bitB
+ • Galaxy S21 FE 5G SM-G990U2 bitC
+ • Galaxy S21 Ultra 5G SM-G998U bitE
+ • Galaxy S9 SM-G9600 bit9
+ • Galaxy Tab A 8.0 2018 SM-T387V bit4
+ • Galaxy Tab A 8.0 2017 SM-T380 bit4
+ • Galaxy Tab A9+ 5G SM-X218U bit6
+ • Galaxy Tab S6 SM-T860 bit5
+ • Galaxy Tab S6 Lite SM-P619 bit9
+ • Galaxy Tab S7 SM-T870 bit8
+ • Galaxy Tab S7 SM-T875 bit8
+ • Galaxy Tab S7 FE SM-T735 bit7
+ • Galaxy Tab S7+ SM-T970 bit7
+ • Galaxy Tab S8 SM-X700 bit8
+ • Galaxy Tab S8+ WiFi SM-X800 bit8
+ • Galaxy XCover6 Pro SM-G736B bit8
+ • Galaxy Z Flip 5G SM-F707N bit5
+ • Galaxy Z Fold2 5G SM-F916N bit4
+ • Galaxy Z Fold3 5G SM-F926B bitA
+ • Galaxy Z Fold3 5G SM-F926U bit9
+ 
+ 
+Added New Loaders of Orbic Next Models [EDL]:-
+ • RC555L
+ • RC545L
+
+Fixed Remove KG EDL STEP A05s A057M bit7
+Update Support Preloader AUTH MTK techo/Infinix 2024
+Update Enable/Disable Factory Reset</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.7 | 2025/02/20 09:15:44
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM TOOL PRO V1.1.7
+Release Date:2025-02-20
+
+Added Support New patches Galaxy A05s up to latest Patches
+Added Support Bypass KG/MDM Samsung 2025 Updates Via TSM APP:-
+  • KG Active
+  • KG Broken
+  • KG Error
+
+Added Remove KG/MDM &#39;Please Insert An Active SIM&#39; World First Solution
+
+Fixed TSM APP Issues:-
+  • No need to turn off internet anymore
+  • No error msgs while using the phone anymore
+
+Added EROFS Read Info on Qualcomm Protocol
+Added EROFS Read Info on Unisoc Protocol
+Added EROFS Read Info on Mediatek Brom/Preloader Auth
+
+Added NEW CHIPS On Unisoc/SpreadTrum Protocol
+  • Tiger T603_64
+  • Tiger T310_64
+  • Tiger T618_64
+  • Tiger T612_64_v2
+  • Tiger T700_64
+
+Added New protocol MTK/Preloader Auth Protocol
+Added Samsung Remove knox enrollment service [KG - Method 4]
+Added Samsung Remove Remove Payjoy [KG - Method 4] Beta
+Added New Samsung loaders
+Added Disable/Enable Factory Reset
+Added Disable/Enable OTA Updates Itel/Infinix/Tecno
+Added Samsung Enable OTA Updates
+Updated Samsung Disable OTA Updates
+Added One click Factory Reset Method Via ADB 
+Added Fix Install APKS After FRP Remove
+Added Samsung Fix Access Denied
+Added Samsung Fix Service Provider Update
+Updated Arabic Methods to support latest patches
+Updated All protocols to be easier with read/write/erase parstions edl/sprd/mtk flasher
+Added Factory Reset With KG EDL Step [Optional]
+Updated mtk flasher no need reboot device each time
+Fixed long timeout sprd handshake 
+Updated Search Models Algorithm
+
+Updated Qualcomm Auto Loader to support More Than 2500 Device:-
+  • Samsung 
+  • ZTE
+  • LG
+  • Coolpad
+  • Huawei
+  • LT
+  • Xiaomi
+  • Oppo
+  • Vivo
+
+Added Support ZTE EDL/Sprd Mode Models
+  • Read Firmware
+  • Write Firmware
+  • Remove FRP
+  • Factory Reset
+  • Read/Write/Erase Security
+  
+-&gt; Models:-
+  • Blade L220
+  • Axon 30 5G
+  • Axon 30 Pro 5G
+  • Axon 30 Ultra 5G
+  • Blade V40 Vita
+  • Axon 40 Lite
+  • Axon 40 SE
+  • Axon 60 Lite
+  • Blade 20 5G
+  • Blade 20 Pro 5G
+  • BLADE A3 2019
+  • BLADE A3 2020
+  • Blade A31 Plus
+  • Blade A35 Lite
+  • BLADE A5 2019
+  • BLADE A5 2020
+  • BLADE A5 PRO
+  • BLADE A52 LITE
+  • Blade A521
+  • Axon 60
+  • Red Magic 6 Pro
+  • Red Magic 6
+  • Red Magic 7 Pro
+  • Red Magic 7S Pro
+  • Red Magic 5G
+  • Blade A53 Pro
+  • Blade A7 2020
+  • Blade A7 Prime
+  • Blade A71
+  • Blade A72 4G
+  • A0605
+  • A0620
+  • A0622
+  • N9131
+  • N9132
+  • N9136
+  • N9137
+  • N9517
+  • N9518
+  • N9519
+  • N9521
+  • N9560
+  • Neva80
+  • Neva
+  • T57
+  • T920
+  • V0840
+  • V72M
+  • V780_V2
+  • WF723
+  • WF723S
+  • Z-01K
+  • Z230
+  • Z3001S
+  • Z5031O
+  • Z5151V
+  • Z557BL
+  • Z559DL
+  • Z55BL
+  • Z610DL
+  • Z667
+  • Z669
+  • Z718TL
+  • Z755
+  • Z777
+  • Z787
+  • Z792
+  • Z812
+  • Z813
+  • Z828
+  • Z830
+  • Z831
+  • Z832
+  • Z833
+  • Z835
+  • Z836F
+  • Z839
+  • Z839V
+  • Z850
+  • Z851
+  • Z851M
+  • Z852
+  • Z855
+  • Z890
+  • Z916BL
+  • Z926
+  • Z933
+  • Z955A
+  • Z956
+  • Z957
+  • Z959
+  • Z963U
+  • Z965
+  • Z968
+  • Z971
+  • Z978
+  • Z981
+  • Z982
+  • Z983
+  • Z985
+  • Z987
+  • Z988
+  • Z998
+  • Z999
+
+Added Next Motorola Models:-
+  • Motorola Fiji
+  • Motorola Moto E 7I Power&#34; &#34;XT2097-13, XT2097-14
+  • Motorola G20 2021 G20 2021
+  • Motorola Moto E40 Moto E40
+  • Motorola Moto G14 XT2106-1
+  • Motorola Moto E30 XT2159-6,XT2159-8,XT2159-5,XT2159-2,XT2159-1
+  • Motorola Moto E32 XT2227-4,XT2227-3,XT2227-2,XT2227-1
+  • Motorola Moto E20 XT2155-8,XT2155-6,XT2155-5,XT2155-3,XT2155-1
+  • Motorola Moto E6i XT2053-6,XT2053-5
+
+
+Added Next Vivo Models :-
+  • Vivo V9 1723
+  • Vivo V7 1718
+  • Vivo Y91 1817
+  • Vivo X7 Plus PD1603
+  • vivo Y1s
+  • Vivo Y11 1906
+  • Vivo Y55 PD1613
+  • Vivo Y53 PD1628F
+  • Vivo Y66 PD1621
+  • Vivo Y95 1807
+  • Vivo Y20a V2034
+  • Vivo Y85
+  • Vivo Y71 1724
+  • Y15s V2120
+  • Y19s
+  • Y18t
+  • Y18i
+  • Blue XL5
+
+COOLPAD MTK:-
+  • COOLPAD 3632A
+  • Coolpad Cool S
+  • Coolpad Cool 20 Pro
+  • Coolpad COOL 20s
+  • Coolpad COOL30i
+  • Coolpad COOL 40i
+  • Coolpad Cool 20
+  • Coolpad COOL 20+
+  • Coolpad Cool 10
+  • Coolpad Qiku Dazen Note 3
+  • Coolpad Porto S
+  • Coolpad 7296S
+  • Coolpad 9080W
+  • Coolpad 9976A Halo
+  • Coolpad F1 8297W
+  • Coolpad 7320
+  • Coolpad Dashen X7
+  • Coolpad Y60
+  • Coolpad F2 Dazen
+  • Coolpad Qiku Dazen Note 3
+  • Coolpad TipTop Air
+  • Coolpad Torino S2
+  • Coolpad Mega
+  • Coolpad TipTop 3
+  • Coolpad Modena 2
+  • Coolpad N5 Lite
+  • Coolpad Cool 9
+  • Coolpad Cool Play 8
+  • Coolpad Cool 3 Plus
+  • Coolpad Note 8
+  • Coolpad Cool Play 8 Lite
+  • Coolpad Cool Play 7
+  • Coolpad Cool2
+  • Coolpad Modena 2
+  • Coolpad Note 5 Lite
+  • Coolpad Mega 3
+  • Coolpad Note 5 Lite
+
+Added Tecno Infinix Itel new models
+Tecno:-
+  • BG6-Spark Go 2024
+  • BG6h-Pop 8
+
+Infinix:-
+  • X6528B-Hot 40i
+  • X6525-Smart 8 HD
+  • Smart 6 (X6511B, X6511, X6511E)
+  • Smart 7 HD X6516
+  • Smart 5 Pro PR625B
+  • Hot 11 2022 (X675)
+  • Hot 12 Pro X668C,X668
+  • Hot 12 Play X6816D
+  • Hot 30i (X669, X669C, X669D)
+
+Itel:-
+  • A665L-A70
+  • A662LM-A60s
+  • P683L-P40+
+  • S662L-S18 Pro
+  • S681LN-S23+
+  • P662L-P40
+  • S665L-S23
+  • A663L-A60
+  • P55 (A666l)
+
+Added new realme models 
+  • Realme Note 60x
+  • Realme Note 60
+  • Realme Narzo N61
+  • Realme C61 
+  • Realme C61 (India)
+  • Realme Narzo N63
+  • Realme C63
+  • Realme C51s
+  • Realme Note 50
+  • Realme 11
+  • Realme C51
+  • Realme C53 (India)
+  • Realme Narzo 60
+  • Realme C53
+  • Realme Narzo N53
+  • Realme C33 2023
+  • Realme C33 
+  • Realme Narzo 50i Prime
+  • Realme C30
+  • Realme Pad Mini
+  • Realme C31
+  • Realme Narzo 50A Prime 
+  • Realme C35
+
+Updated enable volte sprd via diag mode
+
+added 4G Settings one Click
+LT:-
+ Note 10M
+ 
+SUGER:-
+  • F11
+  • C11
+  • S9
+  • Y15
+  • S20
+  • S11
+  • C21
+ 
+LG:-
+  • G6
+  • K920
+  • V60
+  • LMQ710CS
+  • VS996
+  • Q720TS
+  • Q720VS
+</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.6 | 2024/11/28 17:28:35
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM TOOL V1.1.6 | Date 2024/11/28
+Added Samsung Remove KG Android 14
+Added Samsung KG Change to ACTIVE 
+Added Samsung Remove KG Support ALL CPU All Android 14
+Added Samsung Disable Factory Reset
+NEW KG Method Supported Exynos/Unisoc/MTK/Qualcomm Just Need QR Code+ADB
+Improved Huawei Hisilicon remove frp fastboot
+Improved Xiaomi Remove Mi-Account EDL Mode
+</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.5 | 2024/11/12 20:36:15
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>🤩 A new interface that is more flexible, professional and smart 🤩
+
+🔥 Free Xiaomi Remove FRP Auth Via Sideload Mode All Xiaomi All versions 🔥
+Added Samsung QR-CODE Android 14 All patches
+Added Samsung new method Bypass KG/MDM
+Added Samsung Install/Remove Arabic No Need Theme  [12,13,14]
+Added Xiaomi Remove Mi-Account EDL Mode
+Added Sprd/Unisoc Diag Functions {Read Info,Factory,Reboot to Diag}
+
+🔥 Added New Protocol MTK V6 🔥 
+Next Chips:-
+  • MT6835 - Dimensity 6100+
+  • MT6895 - Dimensity 8100
+  • MT6789 - Helio G99
+
+Next Brands:-
+  • Oppo
+  • Realme
+  • Tecno
+
+
+Supported Functions:
+- Read Scatter/Partitons
+- Write Partitons [No Full Flash]
+- Erase Partitons
+- Remove FRP
+- Factory Reset 
+
+Some Supported Models(V6):
+  • Tecno Pova 4
+  • Oppo Reno 8T
+  • Realme 10
+  • Realme 11 4G
+  • Realme 11 5G
+  • Realme 12X
+  • Realme C67 5G
+  • Realme GT Neo 3
+
+🔥 Added New Protocol MTK Preloader Auth 🔥
+
+Supported Brands:-
+  • Samsung
+  • Vivo    (2023 Patches)
+  • Infinix (2023-2024)
+  • Tecno   (2023-2024)
+  • Xiaomi
+  • Itel
+
+* Work Flash/Format/Erase FRP
+Next Chips:-
+  • MT6739
+  • MT6761
+  • MT6763
+  • MT6765
+  • MT6768
+  • MT6781
+  • MT6785
+  • MT6833
+  • MT6877
+  • MT6893
+  • MT6983
+  • MT6895
+  • MT6789
+  • MT6877T(VIVO)
+
+Samsung Models (MT6833):-
+  • SM-A226B
+  • SM-A037F
+  • SM-A042F
+
+Oppo Models:-
+  • Oppo A53 5G
+  • Oppo Reno4 SE
+  • Oppo A94 5G
+  • Oppo A95 5G
+  • Oppo F19 Pro+ 5G
+  • Oppo Reno5 Z
+  • Oppo Reno6 Z
+  • Oppo K7x
+  • Oppo A72 5G
+
+Xiaomi Models:-
+  • Redmi 13C [gale MIUI]
+  • POCO C65 [gale ENG]
+  • Redmi 13C [gale MIUI]
+  • POCO C65 [gale ENG]
+
+
+Tecno Models:-
+  •  Tecno Camon i4 | Camon 11S - CB7
+  •  Tecno Camon 12 Air - KC3
+  •  Tecno Camon 12 Air - CC6
+  •  Tecno Camon 12 - CC7
+  •  Tecno Camon 12 Pro - CC9
+  •  Tecno Camon 15 - CD7
+  •  Tecno Camon 15 Air - CD6
+  •  Tecno Camon 15 Air - CD6S
+  •  Tecno Camon 15 Premier - CD8j
+  •  Tecno Camon 15 Pro - CD8
+  •  Tecno Camon 16 SE - CE7J
+  •  Tecno Camon 16 Pro - CE8
+  •  Tecno Camon 16 - CE7
+  •  Tecno Camon 16 - CE9H
+  •  Tecno Camon 17 - CG6
+  •  Tecno Camon 17 - CG6J
+  •  Tecno Camon 17P - CG7
+  •  Tecno Camon 17P - CG7N
+  •  Tecno Camon 18 - CH6
+  •  Tecno Camon 18 - CH6N
+  •  Tecno Camon 18T - CH6T
+  •  Tecno Camon 19 - CI6
+  •  Tecno Camon 19 - CI6H
+  •  Tecno Camon 19 Neo - CH6I
+  •  Tecno Camon 20s Pro 5G - CK8nB
+  •  Tecno Camon 20 Pro 5G - CK8n
+  •  Tecno Camon 20 Premier - CK9n
+  •  Tecno Camon 20 - CK6
+  •  Tecno Spark Power 2 - LC8
+  •  Tecno Spark 8 Pro - KG8
+  •  Tecno Spark 10 - KI5Q
+  •  Tecno Spark 10 - KI5N
+  •  Tecno Spark 10 Pro - KI7
+  •  Tecno Spark 20 - KJ5
+  •  Tecno Spark 20C - BG7
+  •  Tecno Spark 20C - BG7n
+  •  Tecno Spark Go 2023 - BF7
+  •  Tecno Phantom V Flip - AD11
+  •  Tecno Pova 2 - LE7
+  •  Tecno Pova 2 - LE7n
+  •  Tecno Pova Neo 2 - LG6N
+  •  Tecno Pova Neo 3 - LH6n
+  •  Tecno Pova Neo 3 - LH6
+  •  Tecno Pova 5 Pro - LH8n
+  •  Tecno Pova 6 Pro - LI9
+  •  Tecno Camon 19 Pro 5G - CI7n
+  •  Tecno Spark 10 5G - KI8
+
+Infinix Models:-
+  • Infinix Hot 30 5G  - X6832 
+  • Infinix Note 12 5G  - X671 
+  • Infinix Note 12 Pro 5G  - X671B 
+  • Infinix Hot 20 5G  - X666B 
+  • Infinix Hot 20 5G  - X666C 
+  • Infinix Note 30 5G  - X6711 
+  • Infinix Note 11  - X662 
+  • Infinix Note 11  - X662B 
+  • Infinix Note 11  - X662F 
+  • Infinix Note 11i  - X663 
+  • Infinix Note 11i  - X663B 
+  • Infinix Note 11i  - X663C 
+  • Infinix Note 11 Pro  - X697 
+  • Infinix Note 11s  - X689 
+  • Infinix Note 12i  - X6819 
+  • Infinix Note 12  - X6817 
+  • Infinix Note 30 VIP  - X6710 
+  • Infinix Note 30i  - X6716B 
+  • Infinix Hot 10i  - X658E 
+  • Infinix Hot 10i  - X658B 
+  • Infinix Hot 20i  - X665E 
+  • Infinix Hot 20 Play  - X6825 
+  • Infinix Hot 30 Play NFC  - X6835B 
+  • Infinix Hot 30 Play NFC  - X6835 
+  • Infinix Hot 30  - X6831 
+  • Infinix Hot 40  - X6836 
+  • Infinix Zero 30  - X6731 
+  • Infinix GT 10 Pro  - X6739 
+
+
+Added New SPRD Devices:-
+
+🔥 Nokia:
+  • T10 TA-1462
+  • T10 TA-1503 
+  • T10 TA-1472
+  • T10 TA-1535
+  • G11 TA-1477
+  • C21 TA-1466
+  • C12 TA-1535
+  • C12 TA-1519
+  • C12 TA-1513
+  • C12 TA-1502
+  • C12 TA-1508
+  • T21 TA-1499
+  • T21 TA-1505
+  • T21 TA-1521
+  • T21 TA-1495
+  • C31 TA-1499
+  • C31 TA-1497
+  • C31 TA-1493
+ 
+Added Support Remove FRP Via Sideload Mode Xiaomi/Redmi/Poco New Models:
+  • Xiaomi Redmi 14C
+  • Xiaomi Redmi 13C
+  • Xiaomi Redmi Note 13
+  • Xiaomi Redmi Note 13 Pro
+  • Xiaomi Redmi Note 13 Pro+
+  • Xiaomi Redmi 12
+  • Xiaomi Redmi 12C
+  • Xiaomi Redmi A2
+  • Xiaomi Redmi A2+
+  • Xiaomi Poco C65
+  • Xiaomi 13T Pro
+  • Xiaomi 13T
+  • Xiaomi 13 Lite
+  • Xiaomi 13
+  • Xiaomi 13 Pro
+  • Xiaomi Redmi 14C (expected release)
+  • Xiaomi Redmi Note 14
+  • Xiaomi Redmi Note 14 Pro
+  • Xiaomi Redmi Note 14 Pro+
+  • Xiaomi 14
+  • Xiaomi 14T
+  • Xiaomi 14T Pro
+  • POCO X5
+  • POCO X5 Pro
+  • POCO F5
+  • POCO F5 Pro
+  • POCO C51
+  • POCO C55
+  • POCO M6 Pro
+  • POCO X6
+  • POCO X6 Pro
+  • POCO F6
+  • POCO F6 Pro
+
+Improved Read Info In All Modes
+Improved Change CSC
+Improved IMS Options All Modes/And Brands
+
+Note :FRP Auth Xiaomi 3 Requests Free Daily for all customers
+Note :QR Code android 14 Supported All brands
+</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.4 | 2024/11/01 20:55:45
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TurboServiceMobile V1.1.4 | 2024/09/27 17:58:53
+#TSM_PRO #TSM
+🔥Added Fix MDM Can&#39;t Download OneClick EDL Mode 🔥
+
+# Added Support New Samsung Models And Bits[MTK]
+⚡️ Read/Write Scatter
+⚡️ Remove FRP
+⚡️ Factory Reset
+⚡️ Read/Write RPMB
+⚡️ Read Hardware Keys
+
+🔥The Models Are Supported
+  • Galaxy A32 A325,A325F,A325U,A325U1
+  • Galaxy A14 SM-A146U,SM-A146P
+  • Galaxy A01 Core SM-A013F,SM-A013G,SM-A013M
+  • Galaxy A02 SM-A022F,SM-A022G,A022M
+  • Galaxy A03s SM-A037F,A037U,A037U1
+  • Galaxy A10s SM-A107F,A107M
+  • Galaxy A12 SM-A125F,SM-A125M,SM-A125N,SM-A125U,SM-A125U1,SM-A125W
+  • Galaxy A21 SM-A215U,SM-1215U1,SM-A215W
+  • Galaxy A22 5G SC-56B
+  • Galaxy A22 5G SM-A226B,A226BR
+  • Galaxy A31 SM-A315F,SM-A315G,SM-A315N
+  • Galaxy A41 SC-41A,SCV48,A415F
+  • Galaxy M01 Core SM-M013F
+  • Galaxy M01s SM-M017F
+  • Galaxy M02 SM-M022F,SM-M022G,SM-M022M
+  • Galaxy M13 5G SM-M136B
+  • Galaxy M32 SM-M325F
+  • Galaxy M53 5G SM-M536B
+  • Galaxy A04 SM-A045F,SM-A045m,A042F
+  • Galaxy A13 A136U,A136U1
+  • Galaxy A05 SM-A055F,A055M
+
+🔥 Added New CHIP Support Unisoc/SPD 🔥
+⚡️ Write PAC 
+⚡️ Read/Write Firmware
+⚡️ Read/Write RPMB
+⚡️ Restore Firmware
+⚡️ Reset FRP
+⚡️ Factory reset
+⚡️ Read/Write IMEI
+⚡️ Unlock Network
+⚡️ Added RSA AUTH Chip
+
+Supported Many Brands
+Samsung
+TECNO
+INFINIX
+ITEL
+REALME
+Micromax
+Gionee
+Hisense
+BLACKVIEW
+ALCATEL
+BLU
+WIKO
+ZTE
+IKU
+
+🔥Samsung
+  • SM-X205C 
+  • SM-X200 
+  • SM-T509 
+  • SM-A035M 
+  • SM-A035G 
+  • SM-A035F 
+  • SM-A032M
+  • SM-A032F
+
+🔥REALME
+  • C30 RMX3581
+  • 50A RMX3516
+  • 50i RMX3235
+  • C35 RMX3513
+  • C11 2021 RMX3231
+  • C21Y RMX3261 
+  • C21Y RMX3261 V2
+  • C21Y RMX3263
+  • C21Y RMX3263 V2
+  • C25Y RMX3269
+  • C31 RMX3501
+  • C33 RMX3624 
+  • C35 RMX3511
+  • 50A RMX3516PU
+  • C30S RMX3690
+  • C33 RMX3624EU
+  • C33 RMX3624BA 
+  • C25Y RMX3268
+  • RMX3235
+  • C25Y RMX3265
+  • C35 RMX3511
+  • 50I RMX3506
+  • C31 RMX3503
+  • C21Y RMX3262
+
+
+🔥TECNO
+  • TECNO POP 2 MINI SA2S
+  • TECNO POP 2F B1G
+  • TECNO POP 5 GO BD1
+  • TECNO POP 5X L6502S
+  • TECNO SPARK 7 PR651E 
+  • Tecno Pop 5 BD2P
+  • Spark 8C KG5K
+  • POP 5 LTE BD4
+  • POP 4 BC2C
+  • POP 2X AIR RB6S 
+  • POP 2X PLUS RB8S 
+  • SA7S
+  • BC2c Pop 4
+  • BD2 Pop 5
+  • BD2p Pop 5
+  • BD1 Pop 5 Go
+  • BD4 Pop 5 LTE
+  • Spark 7
+  • Spark 8c
+
+
+🔥Micromax
+  • IN 2B MMX7544 
+  • LAVA
+  • LAVA Z1S
+  • Lava V62
+  • LAVA LS000BEU
+  • LAVA Z66 
+  • IONE NOTE N8305
+  • IONE N8205
+  • Q4002 
+  • IRIS 61
+  • LE9920
+  • Z41 LN9910
+  • Z52 PRO LH9910
+  • Z53
+  • Z61 PRO
+  • Z66 
+
+🔥INFINIX
+  • INFINIX X6816C
+  • INFINIX PR652C
+  • INFINIX PR652B 
+  • HOT 11 X675
+  • HOT 12 PRO X668
+  • Hot 10i PR652B 
+  • Smart 5 Pro
+  • Smart 6
+  • Smart 6 plus
+  • Smart 7
+  • Smart 8
+  • Hot 11 2022
+  • Hot 12 Play  
+  • Hot 10i pr652
+  • Hot 12 pro
+
+🔥Hisense
+  • E20 HLTE103E
+  • E40 HLTE229E
+  • E50 HLTE232E
+  • E50 Lite HLTE228E
+  • E60 HLTE236E
+  • E60 Lite HLTE235E
+  • U30 HLTE106E
+  • U964 
+
+🔥ITEL
+  • A11
+  • A12
+  • A13
+  • A13 PLUS
+  • A14 MAX
+  • A14 PLUS
+  • A14 SA215
+  • A14S
+  • A16
+  • A16 PLUS
+  • A16S SA331
+  • A20
+  • A21
+  • A23
+  • A23 PRO
+  • A24
+  • A25 L5002
+  • A25 PRO
+  • A26
+  • A33 Plus A509W
+  • A33 W5001P
+  • A35 W5002-F3110
+  • A36
+  • A37
+  • A40
+  • A41
+  • A41 Plus
+  • A42 Plus
+  • a44
+  • A44 Air
+  • A44 Power
+  • A46
+  • A47
+  • A48
+  • A48 L6006L
+  • A507LM
+  • A507LS
+  • A509W
+  • A509WM
+  • A51
+  • A511LP2
+  • A511LQ
+  • A512W
+  • A55
+  • A55 LTE
+  • A551L
+  • A56
+  • A56 LTE L6004
+  • A56 Pro
+  • A56 W6004P
+  • A571L
+  • A571LS
+  • A571W
+  • A571WM
+  • A58 A661W
+  • A611WP
+  • A631W
+  • A631W2
+  • A661L
+  • A661W
+  • AC60
+  • Alpha Lite
+  • Alpha W5503
+  • it1355
+  • it1655
+  • L5002R
+  • L5007
+  • L5503L-F6301
+  • L6005
+  • L6502-F3208
+  • L6502S
+  • P11
+  • P12
+  • P15
+  • P33
+  • P33 Plus
+  • P33 Plus W6001
+  • P36
+  • P36 W6501-F3111
+  • p37 P651W
+  • p37 pro P681L
+  • p38 pro P682L
+  • P41
+  • P551W
+  • P651W
+  • P682LP
+  • P682LPN
+  • S15
+  • S15 Pro
+  • S16 Pro
+  • S16 Pro Vision 2
+  • S661L
+  • S661LN
+  • S661W
+  • S662LC
+  • SA633
+  • SA633 W7001
+  • V41
+  • Vision 1 P36 Play
+  • Vision 1 Plus P36 Pro
+  • Vision 1 PRO L6502
+  • Vision 2
+  • VISION 2 L6503
+  • Vision 2S P651L
+  • Vision 3
+  • W4001
+  • W4003
+  • W5005P-F3110
+  • W5008
+  • W5008-SA332
+  • W6501 
+
+🔥ALCATEL
+  • 3080
+  • 3082
+  • 3085
+  • 3089
+  • 3189
+  • 4065
+  • 4087
+  • 4165
+  • 4165J1
+  • 4187
+  • 4187D
+  • 5001
+  • 5003
+  • 5024
+  • 5024F
+  • 5024J
+  • 5030
+  • 5030A1
+  • 5030D
+  • 5030F1 
+  • 1L Pro
+  • 1SE
+  • 1v 5001J
+  • 1v 5001T
+  • 1c 5003A
+  • 1c 5003D
+  • 1c 5003G
+  • 1c 5003U
+  • 1c 20195003X
+  • 1s 5024A
+  • 1s 5024D
+  • 1S 5024F
+  • 1S 5024I  
+  • 1S 5030A
+  • 1SE 5030D
+  • 1SE 5030E 
+  • 1SE 5030F
+  • 1SE 5030U
+
+🔥BLU MOBILE
+  • ADVANCE L5
+  • C0051LL
+  • C5l C0050
+  • C6 2019 C090EQ
+  • G5 G0090 
+  • G5 PRO G0190
+  • G6 G0210
+  • G60 G0270WW
+  • G8 G0170
+  • U851
+
+🔥ZTE
+  • Z6621O
+  • BLADE A3 2019
+  • BLADE A3 2020 ATT
+  • BLADE A3 2020 TELCEL
+  • BLADE A3 Z3051T
+  • BLADE A5 2019
+  • BLADE A5 2020
+  • BLADE C340
+  • BLADE C341
+  • BLADE L110
+  • BLADE L111
+  • BLADE L130
+  • BLADE L7
+  • BLADE L8 
+  • BLADE V10 VITA 
+ 
+🔥CONDOR
+  • CONDOR G5
+  • CONDOR G5 PRO
+  • CONDOR T1
+  • CONDOR T2
+  • CONDOR T3
+  • GRIFFE T5
+  • GRIFFE T6
+  • GRIFFE T8
+  • GRIFFE T9 
+
+🔥BQ MOBILE
+  • BQ 1084L
+  • BQ 1085L
+  • BQ 5002G
+  • BQ 5340
+  • BQ 5518G
+  • BQ 5730L
+  • BQ 6042L 
+
+🔥DEXP MOBILE
+  • A240
+  • B11
+  • B17
+  • B31
+  • B38
+  • BL350
+  • EX111
+  • H210
+  • H310
+  • H370
+  • H410
+  • K11
+  • K18
+  • K21
+  • K28
+  • L210
+  • L270
+  • N310
+  • N380I
+  • Q110 
+
+🔥DIGMA
+  • CITI 7507 4G
+  • CITI OCTA 10
+  • CITI OCTA 70
+  • CITI OCTA 80
+  • OPTIMA 10 A501S
+  • OPTIMA 10 X702
+  • OPTIMA 10 Z802
+  • OPTIMA 1028 3G
+  • OPTIMA 7 A100S
+  • OPTIMA 7 A101
+  • OPTIMA 8 X701
+  • OPTIMA 8027
+  • OPTIMA PRIME 5
+  • PLANE 1596 3G
+  • PLANE 7594 3G
+  • PLANE 8550S
+  • PLANE 8595 3G
+  • PLANE 1585S 
+
+🔥 ZTE:
+  • Axon 20 4G
+  • Axon 40 SE
+  • Blade V40s
+  • Blade V30
+  • Blade V40
+  • Blade V40 Pro
+  • Blade V40 Design
+  • Blade V40 Smart  
+  • Blade V40 Vita
+  • Blade A31  
+  • Blade A31 Plus
+  • Blade A5
+  • Blade A51  
+  • Blade A52
+  • Blade A71
+  • Blade A72 4G
+  • Blade A7s
+  • Blade V10 Vita
+  • Blade A31 Lite
+  • Blade A3
+  • Blade A31 Lite
+  • Blade L8
+  • Blade L9  
+  • BLADE Q3 P731A30
+  • BLADE A5 PRO P731A20 
+  • BLADE L110 P731A50
+  • BLADE L7 P731F10 
+  • BLADE L7A P731F12
+  • BLADE L8 P731F20 
+  • BLADE L9 P731F21
+  • BLADE L130 P731F30 
+  • BLADE L531 P731F50
+  • BLADE A3 LITE P932F20
+  • BLADE A3 2020 P932F50
+  • BLADE V10 VITA P963F01 
+  • BLADE A7 2019 P963F02
+  • BLADE A7S 2020 P963F03 
+  • BLADE V2020 P963F05
+  • BLADE A5 2020 P963F50 
+  • BLADE A52 LITE P963F5A
+  • BLADE A51 P963F60 
+  • BLADE A51 LITE P963F60V
+  • BLADE A52 P963F61 
+  • BLADE A31 P963F70
+  • BLADE A31 PLUS P963F80
+  • ZTE Blade V50 Design 4G
+  • ZTE Blade A54
+  • ZTE Blade A34
+  • ZTE Axon 50 Lite
+
+🔥 BlackFox:
+  • BMM431B Black Fox B10 Fox 
+  • BMM431S Black Fox B2
+  • BMM441A Black Fox B9 Fox  
+  • BMM531S Black Fox B2 Fox  
+  • BMM532D Black Fox B2 Fox+ 
+
+
+🔥 Blackview:
+  • A50
+  • A52
+  • A70
+  • A70 Pro
+  • A85
+  • BV4900s
+  • BV6600E
+  • Oscal C20
+  • Oscal C20 Pro
+  • Oscal C80
+  • Oscal Pad 8
+  • Tab 6
+  • Tab 7 Kids 
+  • Tab 8
+  • Tab 8E
+  • Tab 9
+  • Tab 11  
+  • Tab 12
+  • Tab 15
+
+🔥 Umidigi:
+  • A11s
+  • A13
+  • A13 Pro
+  • A13s 
+  • Bison X10G
+  • Bison X10S 
+  • C1 Max
+  • F3 SE
+  • F3S
+  • G1 Max
+  • Power 5s
+  • Power 7
+  • Power 7 Max
+  • Power 7S
+
+🔥 Motorola:
+  • XT2053-5 Moto E6i
+  • XT2053-6 Moto E6i
+  • XT2097-12 Moto E7i Power
+  • XT2097-13 Moto E7i Power
+  • XT2097-14 Moto E7i
+  • XT2097-15 Moto E7i Power 
+  • XT2155-1 Moto E20 
+  • XT2155-3 Moto E20 
+  • XT2155-5 Moto E20 
+  • XT2155-6 Moto E20 
+  • XT2155-8 Moto E20 
+  • XT2227-1 Moto E32 
+  • XT2227-2 Moto E32
+  • XT2227-3 Moto E32 
+  • XT2227-4 Moto E32
+  • XT2128-1 Moto G20 
+  • XT2128-2 Moto G20
+  • XT2128-3 Moto G20 
+  • XT2159-1 Moto E30
+  • XT2159-2 Moto E30 
+  • XT2159-3 Moto E30
+  • XT2159-4 Moto E30 
+  • XT2159-5 Moto E30
+  • XT2159-6 Moto E30 
+  • XT2159-8 Moto E30
+  • Motorola G14
+
+🔥 Nokia:
+  • T10 TA-1462
+  • T10 TA-1503 
+  • T10 TA-1472
+  • T10 TA-1535
+  • G11 TA-1477
+  • C21 TA-1466
+  • C12 TA-1535
+  • C12 TA-1519
+  • C12 TA-1513
+  • C12 TA-1502
+  • C12 TA-1508
+  • T21 TA-1499
+  • T21 TA-1505
+  • T21 TA-1521
+  • T21 TA-1495
+  • C31 TA-1499
+  • C31 TA-1497
+  • C31 TA-1493</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.3 | 2024/09/04 14:46:08
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM TOOL V1.1.3 | Date 2024-09-04
+
+Added Samsung Remove MDM/KG EDL+ADB New Models And Bits ⚡️ 🔥
+Added Samsung Remove MDM/KG Qr-Code New Models And Bits ⚡️ 🔥
+Added Samsung Change SN EDL New Models And Bits ⚡️ 🔥
+
+🔥 You Need Just Plug USB 🔥
+
+Added New Models Qualcomm [Read/Write Firmware/Erase FRP/Remove KG-MDM....]
+  • SM-S911B bit5
+  • SM-S911B bit6
+  • SM-S911U bit4
+  • SM-S916B bit5
+  • SM-S916U bit4
+  • SM-S9180 bit3
+  • SM-S918B bit4
+  • SM-S918B bit5
+  • SM-S918B bit6
+  • SM-S918U bit4
+  • SM-S921U bit3
+  • SM-S926U bit3
+  • SM-S9280 bit3
+  • SM-S928B bit2
+  • SM-S928B bit3
+  • SM-S928N bit2
+  • SM-S928U bit3
+  • SM-F711B bit6
+  • SM-F711B bit7
+  • SM-F711U bit6
+  • SM-F721U bit5
+  • SM-F721U bit6
+  • SM-F731B bit3
+  • SM-F731U bit4
+  • SM-F741B bit1
+  • SM-F741U bit1
+  • SM-F936B bit5
+  • SM-F936B bit7
+  • SM-F936U bit6
+  • SM-F946B bit3
+  • SM-F946U bit4
+  • SM-F956B bit1
+  • SM-F956U bit1
+  • SM-S901U bit6
+  • SM-S906E bitA
+  • SM-S906U bit4
+  • SM-S906U bit6
+  • SM-S908E bit8
+  • SM-S908E bitA
+  • SM-S908N bit3
+  • SM-S908U bit4
+  • SM-S908U bit5
+  • SM-S908U bit6
+  • SM-A015G bit6
+  • SM-A025F bit7
+  • SM-A025G bit7
+  • SM-A025M bit8
+  • SM-A057F bit1
+  • SM-A057F bit4
+  • SM-A057M bit2
+  • SM-A115F bit6
+  • SM-A115M bit1
+  • SM-A207F bit5
+  • SM-A235F bit5
+  • SM-A235M bit5
+  • SM-A236U bit5
+  • SM-A236U bit6
+  • SM-A426U bit7
+  • SM-A426U bit8
+  • SM-A526U bitA
+  • SM-A525M bit6
+  • SM-A526U bitC
+  • SM-A528B bit6
+  • SM-A605F bit4
+  • SM-A605G bit4
+  • SM-A716U BitB
+  • SM-A736B bit5
+  • SM-A805 bit4
+  • SM-A905F bit4
+  • SM-A920F bit1
+  • SM-C7000 bit2
+  • SM-E025F bit6
+  • SM-E556B bit1
+  • SM-G770F bit9
+  • SM-G781B bit9
+  • SM-G781B bitA
+  • SM-G781U bit12
+  • SM-G781U bit8
+  • SM-G781U bit9
+  • SM-G781U bitE
+  • SM-G781U bitH
+  • SM-G781V bit5
+  • SM-G781V bitB
+  • SM-G781V bitC
+  • SM-G885F bit2
+  • SM-G8870 bit1
+  • SM-G9500 bit4
+  • SM-G9550 bit4
+  • SM-G9600 bit5
+  • SM-G9650 bit5
+  • SM-G9700 bit2
+  • SM-G970U bit9
+  • SM-G9730 bit2
+  • SM-G973U bit9
+  • SM-G9750 bit4
+  • SM-G981U bit9
+  • SM-G981V bit8
+  • SM-G986N bit1
+  • SM-G986U bit9
+  • SM-G9880 bit1
+  • SM-G988N bit1
+  • SM-G990B2 bit7
+  • SM-G990U bitC
+  • SM-G990U2 bit7
+  • SM-G990U2 bitA
+  • SM-G991U bit8
+  • SM-G991U bitA
+  • SM-G991U bitC
+  • SM-G996U bitA
+  • SM-G996U bitC
+  • SM-G998U bitA
+  • SM-G998U bitC
+  • SM-J250F bit2
+  • SM-J250M bit5
+  • SM-J410F bit2
+  • SM-J410G bit1
+  • SM-J415F bit4
+  • SM-J415G bit2
+  • SM-J610F bit3
+  • SM-J610G bit2
+  • SM-J810F bit4
+  • SM-J810G bit2
+  • SM-J810M bit2
+  • SM-J810Y bit3
+  • SM-M115F
+  • SM-M145F bit2
+  • SM-M236B bit6
+  • SM-M236L bit6
+  • SM-M426B bit7
+  • SM-M556B bit1
+  • SM-M556B bit2
+  • SM-N9500 bit5
+  • SM-N9600 bit4
+  • SM-N9700 bit2
+  • SM-N981U bit5
+  • SM-N981U bit6
+  • SM-N986U bit6
+  • SM-N986U bit8
+  • SM-S236DL bit9
+  • SM-S711U bit1
+  • SM-S711U bit
+  • SM-SC02J bit1
+  • SM-SC03J bit1
+  • SM-T295 bit6
+  • SM-T500 bit8
+  • SM-T595 bit4
+  • SM-T725 bit1
+
+Many Improvements</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.2 | 2024/08/13 16:03:07
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM TOOL V1.1.2 | Date 2024-08-13
+
+Added Samsung Remove MDM/KG (EDL) ⚡️ 🔥
+  • Remove Samsung KG [Smart]
+  • Remove Samsung KG [Fast]
+  • Removee Samsung KG [OLD]
+        KG Remove Supported Up to Android 14
+
+Added Samsung Remove MDM/KG ⚡️ 🔥
+  • MTK BROM [NEW METHOD]
+  • ADB [NEW METHOD]
+   • EXYNOS DOWNLOAD [OLD METHOD]
+
+Added Samsung Change SN ⚡️ 🔥
+  • EDL
+  • MTK BROM
+  • MTP
+
+Added New Models Qualcomm [Read/Write Firmwaree/Erase FRP....]
+  • SM-A235F bit6
+  • SM-G716U bit9
+  • SM-A015F
+  • SM-A015F/DS
+  • SM-A015G
+  • SM-A015G/DS
+  • SM-A015M
+  • SM-A015M/DS
+  • SM-A015T1
+  • SM-S111DL
+  • SM-A015V
+  • SM-A015A
+  • SM-A015AZ
+  • SM-A015U
+  • SM-A015U1
+
+Added LG Killswtich Enabler/Disabler
+Updated Samsung Factory Reset [Download]
+Updated Xiaomi FRP Sideload Auth to be 0.5$ For each device
+Added Xiaomi Fastboot to EDL [Unlocked Bootloader]
+Updated All Convert to CDMA Functions
+Added Fix Install Apk Files After FRP Reset
+
+Supported Models for Samsung Remove MDM/KG (EDL)
+** You Can use custom loader if not there in the list **
+  • SM-A057F bit2
+  • SM-A235F bit4
+  • SM-A235F bit5
+  • SM-A235F bit6
+  • SM-A236E bit5
+  • SM-A236U bit4
+  • SM-A236W bit4
+  • SM-A525F bit6
+  • SM-A526B bit6
+  • SM-A526U bit10
+  • SM-A705F bit5
+  • SM-A705MN bit5
+  • SM-A705Y bit3
+  • SM-A715F bit3
+  • SM-A716U bit9
+  • SM-A716W bit9
+  • SM-A725F bit6
+  • SM-A736B bit6
+  • SM-F711U bit5
+  • SM-F721B bit4
+  • SM-F721B bit5
+  • SM-F721U bit3
+  • SM-F721U bit4
+  • SM-F731B bit1
+  • SM-F731U bit1
+  • SM-F916U bit2
+  • SM-F926N bit2
+  • SM-F926U bit4
+  • SM-F926U bit5
+  • SM-F926B bit4
+  • SM-F926B bit5
+  • SM-F936B bit4 (2)
+  • SM-F936B bit4
+  • SM-F936N bit2
+  • SM-F936U bit3
+  • SM-F936U bit4
+  • SM-F946B bit1
+  • SM-F946U bit1
+  • SM-G716U bit9
+  • SM-G780G bit8
+  • SM-G781B bit8
+  • SM-G781U-U1 bitE
+  • SM-G781V bitB
+  • SM-G970U bit7
+  • SM-G970U-U1 bit9
+  • SM-G970W bit9
+  • SM-G973U bit7
+  • SM-G973U-U1 bit9
+  • SM-G973W bit9
+  • SM-G975W bit9
+  • SM-G975U bit7
+  • SM-G975U bit9
+  • SM-G981U bit7
+  • SM-G981U bit8
+  • SM-G986U bit7
+  • SM-G986U bit8
+  • SM-G988U bit7
+  • SM-G988U bit8
+  • SM-G990U bit9
+  • SM-G990B bit6
+  • SM-G991U bit9
+  • SM-G991U bitA
+  • SM-G996U bit8
+  • SM-G996U bit9
+  • SM-G996U-U1 bitA
+  • SM-G998U bit8
+  • SM-G998U bit9
+  • SM-G998U-U1 bitA
+  • SM-M145F bit1
+  • SM-N970U bit7
+  • SM-N970U bit8
+  • SM-N975U bit7
+  • SM-N975U bit8
+  • SM-N976V bit8
+  • SM-N981U-U1 bit6
+  • SM-N986U bit5
+  • SM-S711U bit2
+  • SM-S9010 bit4
+  • SM-S901U bit3
+  • SM-S901U bit4
+  • SM-S901E bit7
+  • SM-S906E bit7
+  • SM-S906U bit3
+  • SM-S908E bit7
+  • SM-S908U bit3
+  • SM-S911B bit3
+  • SM-S916N bit2
+  • SM-S916W bit2
+  • SM-S916B bit3
+  • SM-S918N bit2
+  • SM-S918U bit2
+  • SM-S921U bit1
+  • SM-S926U bit1
+  • SM-S928B bit1
+  • SM-S928U bit1
+  • SM-S918B bit3
+  • SM-S916U bit2
+  • SM-S911U bit2
+  • SM-T505 bit3
+  • SM-X210 bit1
+  • SM-X216B bit1
+  • SM-X900 bit5
+  • SM-A235F bit6
+  • SM-G716U bit9
+  • SM-A015F
+  • SM-A015F/DS
+  • SM-A015G
+  • SM-A015G/DS
+  • SM-A015M
+  • SM-A015M/DS
+  • SM-A015T1
+  • SM-S111DL
+  • SM-A015V
+  • SM-A015A
+  • SM-A015AZ
+  • SM-A015U
+  • SM-A015U1
+
+Many Improvements</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.0.1 | 2024/03/11 21:30:36
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>V1.0.1 | Date 2024-03-12
+
+Added FRP Bypass FRP (USA-2024)
+Note: U Firmwares Supported Only
+A037U
+A135U
+A146U
+A505U
+A515U
+G988U
+G990U
+G990U2
+G991U
+G996U
+G986U
+G998U
+S901U
+S908U
+S911U
+S916U
+S918U
+N981U
+N986U
+F711U
+F731U
+F946U
+F936U
+F926U
+F721U
+
+Added Samsung Flasher
+- auto select firmware
+- allow of partial flashing
+- Read Info From FW
+- Single / Multi FW Loading
+- Select/Deselect All
+
+Added Unlock/Relock Bootloader
+- support almost mtk chips
+  Alcatel/LG/Zte/Xiaomi ...
+MT6739
+MT6739W
+MT6761
+MT6763
+MT6761V
+MT6762
+MT6765
+MT6768
+MT6771
+MT6779
+MT6785
+
+Added App Manager
+- load Apps With Thier icons
+- load Apps With Thier names
+- load user apps
+- load system apps
+- load disabled apps
+- load enabled apps
+- enable/disable apps
+- clear data apps
+- uninstall apps
+- dump apps from phone
+- install apks
+- get activity
+- remove apps carriers usa
+
+Added Script Manager
+- allow to send AT/DM commands
+- allow to add sleeps each time
+- auto detect ports
+- auto save your changes
+- remove or save your scripts
+
+
+Improvements in CSC Change
+- added some usa carriers
+
+
+Improvements in Cancel Button
+- allow to stop now more functions
+
+Improvements in many functions</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.0.3 | 2024/03/23 21:36:20
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>Improvements and fix bugs</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.0.4 | 2024/04/08 23:30:48
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>TSM Tool Pro V1.0.4 released
+Date:2024/04/09
+
+added mtk devices :-
+added remove Tecno MDM
+added remove Orange State
+added remove Oppo/Realme MDM
+added samsung kg change to Active
+added samsung mdm remove beta[EDL]
+
+Added Samsung Open IMS [Shortcut]
+Added Samsung Open IMS [SideKey]
+
+ِAdded 4G Models :-
+- Auto|Manual Installer
+- Auto Enable LTE Bands
+- Auto Prepare SIM [Replace]
+
+Samsung:-
+GALAXY NOTE20 ULTRA 5G SM-N986U
+GALAXY NOTE10+ 5G SM-N976V
+GALAXY NOTE10+ 5G SM-N976U
+GALAXY NOTE10+ SM-N975U
+GALAXY NOTE10+ SM-N9750
+GALAXY NOTE10 SM-N970U
+GALAXY NOTE9 SM-N960U
+GALAXY NOTE9 SM-N9600
+GALAXY NOTE8 SM-N950U
+GALAXY NOTE8 SM-N9500
+GALAXY S21 ULTRA 5G SM-G998U
+GALAXY S21 ULTRA 5G SM-G998W
+GALAXY S21+ 5G SM-G996U
+GALAXY S21 5G SM-G991U
+GALAXY S21 FE 5G SM-G990U
+GALAXY S20 ULTRA 5G SM-G988U
+GALAXY S20 FE 5G SM-G781U
+GALAXY S10 5G SM-G977U
+GALAXY S10 SM-G973U
+GALAXY S10E SM-G970U
+GALAXY S9 SM-G960U
+GALAXY S9+ SM-G965U
+GALAXY S8 SM-G9500
+GALAXY S8+ SM-G955U
+GALAXY S8 SM-G950U
+GALAXY S7 EDGE SM-G935V
+GALAXY S7 SM-G930V
+GALAXY S7 SM-G930P
+GALAXY Z FOLD3 5G SM-F926U
+GALAXY A70S SM-A7070
+GALAXY A02S SM-A025U
+GALAXY A11 SM-A115A
+GALAXY A42 5G SM-A426U
+GALAXY A11 SM-S115DL
+GALAXY A8S SM-G8870
+GALAXY A6S SM-G6200
+GALAXY A60 SM-A6060
+GALAXY A11 SM-A115U
+GALAXY J3 PRO SM-J3119S
+GALAXY J3 PRO SM-J3119
+GALAXY J3 EMERGE SM-J327R7
+GALAXY ON7 (2016) SM-G6100
+GALAXY C9 PRO SM-C9000
+
+HUAWEI/HONOR:
+Y7 PRIME (2018) LDN-L21
+Y7 PRO (2019) DUB-LX2
+Y7 (2019) DUB-LX1
+Y6 PRIME (2018) ATU-L31
+8C BKK-LX2
+
+VIVO:
+ALL VIVO
+
+Xiaomi/REDMI:
+REDMI NOTE 13 5G GARNET
+REDMI NOTE 12 (CHINA) SUNSTONE
+REDMI NOTE 12R SKY_IN
+REDMI NOTE 12 PRO SPEED REDWOOD
+REDMI NOTE 11 PRO 5G VEUX
+REDMI NOTE 9 PRO 5G GAUGUINPRO
+REDMI NOTE 7 LAVENDER
+REDMI NOTE 8 GINKGO
+
+REDMI K50 GAMING INGRES
+REDMI K30 PHOENIXIN
+REDMI K30 PHOENIX
+REDMI 12 5G RIVER
+REDMI 10A SKY
+REDMI 9T LIME
+REDMI 8 OLIVE
+REDMI 8A OLIVELITE
+
+MI 11 ULTRA MARBLE
+MI 11 ULTRA STAR
+MI 10T LITE GAUGUIN
+MI 8 LITE PLATINA
+CIVI 2 VIOLET
+
+LG:
+LM-G820UM
+
+Huawei:
+ldn-l21
+dub-lx2
+dub-lx1
+atu-l31
+
+Motorola:
+xt2131dl
+xt2131
+xt2117
+xt2115
+xt2113
+xt2093
+xt2052dl
+xt2043
+xt1924-7
+xt1955dl
+xt1924
+xt1920dl
+
+and more ...</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.0.2 | 2024/03/22 13:43:04
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>Added New Samsung Devices:
+S24 | S24+ | S24 Ultra
+S23 | S23+ | S23 Ultra
+S22 | S22+ | S22 Ultra
+And More ....
+- Flash Debug
+- ReadBack
+- Remove FRP
+- Factory Reset
+- Remove KG [Beta]
+
+SM-S921U bit1
+SM-S926U bit1
+SM-S928B bit1
+SM-S928U bit1
+SM-S9010 bit4
+SM-S901U bit4
+SM-S906E bit7
+SM-S906U bit3
+SM-S916N bit2
+SM-S916W bit2
+SM-S918N bit2
+SM-S918U bit2
+SM-A057F bit2
+SM-A235F bit4
+SM-A236E bit5
+SM-A236U bit4
+SM-A236W bit4
+SM-A525F bit6
+SM-A526B bit6
+SM-A705F bit5
+SM-A705MN bit5
+SM-A705Y bit3
+SM-A715F bit3
+SM-A716W bit9
+SM-A725F bit6
+SM-A736B bit6
+SM-F721B bit5
+SM-F721U bit4
+SM-F731B bit1
+SM-F731U bit1
+SM-F916U bit2
+SM-F926N bit2
+SM-F926U bit5
+SM-F936B bit4 (2)
+SM-F936B bit4
+SM-F936N bit2
+SM-F936U bit4
+SM-F946B bit1
+SM-F946U bit1
+SM-G780G bit8
+SM-G781B bit8
+SM-G781U-U1 bitE
+SM-G781V bitB
+SM-G970U-U1 bit9
+SM-G970W bit9
+SM-G973U-U1 bit9
+SM-G973W bit9
+SM-G975W bit9
+SM-G981U bit8
+SM-G986U bit8
+SM-G988U bit8
+SM-G990B bit6
+SM-G991U bitA
+SM-G996U-U1 bitA
+SM-G998U-U1 bitA
+SM-M145F bit1
+SM-N970U bit8
+SM-N976V bit8
+SM-N981U-U1 bit6
+SM-S711U bit2
+SM-T505 bit3
+SM-X210 bit1
+SM-X216B bit1
+SM-X900 bit5
+SM-G975U bit9
+SM-S918B bit3
+SM-S916U bit2
+SM-S911U bit2
+SM-G990U bit9
+
+Added Qualcomm Protocol:-
+- Flash
+- Read XML Firmware
+- Remove FRP
+- Factory Reset
+- Remove Samsung KG
+- Read-Write-Erase Partitions
+- Bypass Systemui [Screenlock Beta]
+- Restore Systemui [Screenlock Beta]
+- Remove ScreenLock unencrypted
+- Read Pattern unencrypted
+- Online Datebase Auto Loaders
+- Daily Updates database
+
+Added MTK Protocol:-
+- Flash
+- Read Scatter
+- Remove FRP
+- Factory Reset
+- Remove HWID
+- Bypass Mi-Account
+- Read-Write-Erase Partitions
+- Read-Write-Erase RPMB
+- Change KG Samsung
+- Samsung Force to Brom
+
+- support almost mtk chips
+MT6739
+MT6739W
+MT6761
+MT6763
+MT6761V
+MT6762
+MT6765
+MT6768
+MT6771
+MT6779
+MT6785
+Supported more than 1000 Model
+
+ADDED FRP Remove MTK Devices
+Mode:DOWNLOAD MODE
+Samsung A32 A325,A325F,A325U,
+A325U1,S326DL
+Samsung A14 SM-A145M,SM-A145F,A145R
+Samsung A14 SM-A146U,SM-A146P,S146VL
+Samsung A01 Core SM-A013F,SM-A013G,
+SM-A013M
+Samsung A02 SM-A022F,SM-A022G,A022M
+Samsung A03s SM-A037F,S134DL,A037U,
+A037U1
+Samsung A10s SM-A107F,A107M
+Samsung A12 SM-A125F,SM-A125M,
+SM-A125N,
+                SM-A125U,SM-A125U1,
+SM-A125W,S127DL
+Samsung A21 SM-A215U,SM-1215U1,
+SM-A215W,
+                S215DL
+Samsung A22 SM-A225F,SM-A225M
+Samsung A22 5G SC-56B
+Samsung A22 5G SM-A226B,A226BR
+Samsung A31 SM-A315F,SM-A315G,
+SM-A315N
+Samsung A41 SC-41A,SCV48,A415F
+Samsung F22 SM-E225F
+Samsung F42 5G SM-E426B
+Samsung M01 Core SM-M013F
+Samsung M01s SM-M017F
+Samsung M02 SM-M022F,SM-M022G,
+SM-M022M
+Samsung M13 5G SM-M136B
+Samsung M32 SM-M325F
+Samsung M53 5G SM-M536B
+Samsung A04 SM-A045F,SM-A045m,A042F
+Samsung A13 S136DL,A136U,A136U1
+Samsung A15 SM-A155F,SM-A155F/DS,
+                SM-A155M, SM-A155M/DS,
+SM-A155P,SM-A155R
+Samsung A05 SM-A055F,A055M</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.0.0 | 2024/03/08 17:14:32
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>Free Update
+LG Services:
+- Open Diag Menu
+- Open APN Settings
+- Factory Reset[MODEM]
+- Remove FRP [MTK]
+- Open Diag Menu Sprint
+- Open Hidden Menu
+- Factory Reset[Serial]
+- Reset Security [Download]
+- Factory Reset [Download]
+- Remove FRP For Next Models:
+LM-X320PM, LG-SP200,
+LG-SP320,LM-X410P,
+LG-Q710PL, LG-Q710AL,
+LM-X220PM, LG-Q710P,
+LM-X410PM, LM-X410BCW,
+LM-X410BTW, LM-X410EO,
+LM-X410EOW, LM-X410FC,
+LM-X410FCW, LG-Q710BAW,
+LG-Q710EM, LG-Q710FA,
+LG-Q710FM, LG-Q710HS
+LG-Q710GX, LG-Q710HSW,
+LG-Q710NAW, LG-Q710YAW,
+LG-Q710BAW, LG-Q710YBW,
+LG-X230, LG-X320P
+
+Samsung Services:
+- Change CSC
+- Bypass FRP (MTP)
+- Open Diag Menu
+- Open PreConfig
+- Open IMS Settings
+- Open APN Settings
+
+Xiaomi Services:
+- Flash Stock Firmware [BAT]
+- Enable Diag Generic Without Root
+- Enable Diag Generic With Root
+- Read Info [SideLoad]
+- Wipe Data [SideLoad]
+
+Motorola Services: [Fastboot]
+- Flash Stock Firmware [XML]
+- Read Info
+- Factory Reset
+- Reset FRP [UNLOCKED BL]
+
+Qualcomm Generic Services:
+- EFS Explorer
+- Read/Write NV Data [NV/NVF/QCN]
+- Read/Write QCN
+- QCN Patch IMEI/MEID/ESN/SPC
+- Read/Reset SPC</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.1 | 2024/07/21 09:33:37
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>ADDED REMOVE FRP RESET VIA SERVER AUTH[SIDELOAD] ⚡️ 🔥
+  • ALL XIAOMI ⚡️ 🔥
+  • ALL POCO   ⚡️ 🔥
+  • ALL REDMI  ⚡️ 🔥
+  * All Security Patches
+ Credit : 1 = 1$
+
+Added More Brands and more Models For Qualcomm Protocol
+Added More Brands and more Models For Mediatek Protocol
+
+Added Convert to CDMA Qualcomm:-
+  • Samsung
+  • LG 7,8,9,10,11 + Force Mode
+  • Generic
+
+Added Enable 3G CDMA Qualcomm:-
+  • Generic
+  • Motorola
+  * Via Diag Directly
+
+Added New Models Mediatek [Read/Write Firmware/Erase FRP....]
+Cricket:-
+  • U304AA Radiant Core
+  • U304AC Rediant Core
+  • U325AC Icon 2
+  • U318AA  Calypso
+  • U705AA Ovation
+  • U705AC Ovation
+
+Huawei:-
+MED-series:
+  • MED-LX9
+  • MED-LX9N
+
+DLI-series:
+  • DLI-AL10
+  • DLI-TL20
+  • DLI-TL10
+  • DLI-L42
+  • DLI-L22
+
+
+VORTEX:-
+  • BTAB0
+  • CG65
+  • CMG101
+  • HD55
+  • HD65
+  • HD60
+  • SYNC
+  • V22
+  • T10M
+  • V23
+  • Z22
+  • Z22S
+  • ZG65H
+
+TINNO:-
+  • U318AA
+  • U318AC
+  • U325AA
+  • U325AC
+  • U705AA
+  • U705AC
+  • U304AA
+
+ALCATEL/TCL:-
+  • 5002 R/C
+  • 5087Z 20XE
+  • 5087W 20XE
+  • 5004 R/C
+  • 5005 R/C
+  • 5008 R/C
+  • 5007Z
+  • 5007W
+  • 5008 R/C
+  • 5032W
+  • 9132S
+  • T7760
+  • T610E
+  • 4188C 30Z
+  • T766A/H/E 10SE
+  • 5026A 3C
+  • T766H 10SE
+  • T779W
+  • 5028A 1S
+  • 9032Z
+  • 5041C
+  • 5031A/G
+  • T676J
+  • 6165A/H
+  • 30XE
+  • 6125F
+  • 6125F1
+  • T767W/H
+  • 6125H
+  • 5005R
+  • 5008R
+  • 4063F/G/T 1L
+  • 5085C
+  • 5029F/A/E
+
+DIALN:-
+  • NEO
+  • X65
+  • X62
+  • NOVA
+
+CLOUD Mobile USA:-
+  • STRATUS C5
+  • STRATUS C5 Elite
+
+Added New Models Qualcomm [Read/Write Firmware/Erase FRP....]
+
+Huawei:-
+ARE-series:
+  • ARE-AL00
+  • ARE-L22HN
+  • ARE-AL10
+
+DUB-series:
+  • DUB-L21
+
+SLA-series:
+  • SLA-L02
+  • SLA-L22
+  • SLA-L03
+  • SLA-L23
+
+
+ADDED XIAOMI FASTBOOT:-
+  • READ INFO
+  • FACTORY RESET
+  • REMOVE FRP [UNLOCKED]</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.0.9 | 2024/06/15 13:55:26
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>Fix Samsung GSM Network(YOU-Sabafon)
+SAMSUNG SM-N9700
+SAMSUNG SM-N970U
+SAMSUNG SM-N970U1
+SAMSUNG SM-N970W
+SAMSUNG SM-N9750
+SAMSUNG SM-N975U
+SAMSUNG SM-N975U1
+SAMSUNG SM-N975W
+
+Added Samsung Factory reset Via Modem Port
+Added Samsung Factory reset Via Download Mode
+
+Added SPRD Open Frequancy Band Via ADB
+Added SPRD Open Engineer mode Via ADB
+Added SPRD Open Engineer mode [2] Via ADB
+Added SPRD Open GCF IoT Via ADB
+Added SPRD Open GCF Settings Via ADB
+Added LG Open Diag Menu Via ADB
+Added LG Open MCFG List Via ADB
+Added LG Open LTE Band Selection Via ADB
+
+Added Switch Network Mode (Qualcomm) Via Diag:
+-Global/Automatic
+-LTE/5G/4G
+-LTE/4G/CDMA
+-LTE/GSM/UMTS
+-CDMA/Evdo
+-CDMA
+-2G
+
+
+Added Auto Volte Enable/Disable and reset Volte Next Brands [ADB]
+Supported Android 11+
+Supported Sim 1/2
+- Vivo
+- Tecno
+- Google
+- Infinx
+- Honor
+- Oneplus
+and more ...
+
+Added Fix MTK hVolte Misc Via Our APK TSM Volte Helper
+
+Added Auto/Enable Volte Next Brands Qualcomm [Network Adapter]
+- Motorola
+- OnePlus
+- OPPO
+- Realme
+- VIVO
+- Redmi
+- Meizu
+- ZTE
+
+Added Enable MBN Configurateion Enabler Qualcomm
+Mode: Network Adapter
+
+Added Keep Userdata+Media For
+- Samsung Flasher
+- Xiaomi Flasher
+- Motorola Flasher
+- Mediatek
+- Qualcomm
+
+
+Allows to service newest devices on:-
+- Kirin620 / Kirin650 / Kirin658
+- Kirin659 / Kirin980 / Kirin990
+- Kirin710 / Kirin810 / Kirin820
+- Kirin920 / Kirin925 / Kirin930
+- Kirin950 / Kirin955 / Kirin960
+- Kirin910 / Kirin935 / Kirin970
+- Kirin710F
+
+- Allows to UnBrick COM1.0 Huawei Models
+- Allows to Unlock Bootloader For Huawei
+- Allows to Remove FRP For Huawei
+- Allows to Read Full Info For Huawei
+- Allows to Flash Board/Update Firmware
+
+
+Supported Models :-
+
+Honor 4C (CHM-U01)
+Honor 4C (CHC-U01)
+Honor 4C (CHC-U23)
+Honor 4C (CHC-U03)
+Honor 4C (CHM-UL00)
+Honor 4C (CHM-TL00)
+Honor 4C (CHM-TL00H)
+Honor 8 Lite (PRA-TL10)
+Honor 8 Lite (PRA-TL20)
+Honor 8 Lite (PRA-LA1)
+Honor 8 Lite (PRA-LX1)
+Honor 8 Lite (PRA-LX2)
+Honor 8 Lite (TAG-L21)
+Honor 8 Lite (PRA-AL00X)
+Honor 8 Lite (TAG-L32)
+Honor 8 Lite (PRA-LX3)
+Honor 8 Lite (PRA-AL00)
+Huawei GT3 (NMO-L31)
+Honor 5C (NEM-UL10)
+Honor 5C (NEM-TL00H)
+Honor 5C (NEM-L21)
+Honor 5C (NMO-L31)
+Honor 5C (NMO-L22)
+Honor 5C (NMO-L23)
+Honor 5C (NMO-L01)
+Honor 5C (NEM-L22)
+Honor 5C (NEM-L51)
+Honor 5C (NEM-AL10)
+Honor 5C (NEM-TL00)
+Huawei GR5 2017 (BLL-L21)
+Huawei GR5 2017 (BLL-L22)
+Honor 6X (BLN-AL10)
+Honor 6X (BLL-L22)
+Honor 6X (BLN-L21)
+Honor 6X (BLL-L21)
+Honor 6X (BLN-L22)
+Honor 6X (BLL-L23)
+Honor 6X (BLN-L24)
+Honor 6X (BLN-AL40)
+Honor 6X (BLN-TL10)
+Honor 6X (BLN-AL20)
+Honor 6 (H60-L02)
+Honor 6 (H60-L01)
+Honor 6 (H60-L12)
+Honor 6 (H60-L04)
+Honor 6 Plus (PE-TL10)
+Honor 6 Plus (PE-UL00)
+Huawei TT Honor 7 (PLK-L01)
+Huawei TT Honor 7 (PLK-AL10)
+Huawei TT Honor 7 (PLK-UL00)
+Huawei TT Honor 7 (PLK-TL01H)
+Huawei TT Honor 7 (PLK-TL00)
+Honor V8 (KNT-AL10)
+Honor V8 (KNT-TL10)
+Honor V8 (KNT-AL20)
+Honor V8 (KNT-UL10)
+Honor Magic (NTS-AL00)
+Honor 8 (FRD-L19)
+Honor 8 (FRD-L14)
+Honor 8 (FRD-L04)
+Honor 8 (FRD-AL00)
+Honor 8 (FRD-TL00)
+Honor 8 (FRD-AL10)
+Honor 8 (FRD-L09)
+Honor 8 (FRD-L02)
+Honor 8 (FRD-DL00)
+Honor 8X (JSN-AL00)
+Honor 8X (JSN-L21)
+Honor 8X (JSN-L22)
+Honor 8X (JSN-L23)
+Honor 8X (JSN-L42)
+Honor 8X (JSN-LX2)
+Honor 8X (JSN-LX3)
+Honor 8X (JSN-TL00)
+Honor 8X (JSN-LX1)
+Honor Note 8 (EDI-AL10)
+Honor 20i (HRY-AL00T)
+Honor 20 Lite (HRY-LX1T)
+Honor 20 Lite (LRA-AL00)
+Honor 20 (YAL-AL00)
+Honor 20 (YAL-TL00)
+Honor 20 Pro (YAL-AL10)
+Honor 20 Pro (YAL-L41)
+Honor 20 Pro (YAL-TL10)
+Huawei P Smart (FIG-L01)
+Huawei P Smart (FIG-L02)
+Huawei P Smart (FIG-L03)
+Huawei P Smart (FIG-L11)
+Huawei P Smart (FIG-L21)
+Huawei P Smart (FIG-L22)
+Huawei P Smart (FIG-L23)
+Huawei P Smart (FIG-L31)
+Huawei P smart 2019 (POT-LX2)
+Huawei P Smart 2019 (POT-L21)
+Huawei P Smart 2019 (POT-L23)
+Huawei P Smart 2019 (POT-LX1)
+Huawei P smart 2019 (POT-LX1AF)
+Huawei P smart 2019 (POT-LX1RUA)
+Huawei P smart 2019 (POT-LX3)
+Huawei P Smart 2022 (POT-L21A)
+Huawei P Smart 2022 (POT-LX1A)
+Huawei P Smart S (AQM-L21A)
+Huawei P Smart S (AQM-LX1)
+Huawei P8 max (DAV-701L)
+Huawei P8 max (P8max)
+Huawei P8 (GRA-UL00)
+Huawei P8 (GRA-L09)
+Huawei P8 (GRA-UL10)
+Huawei P8 (GRA-TL00)
+Huawei P8 Lite (ALE-L21)
+Huawei P8 Lite (ALE-L02)
+Huawei P8 Lite (ALE-L23)
+Huawei P8 Lite (ALE-UL00)
+Huawei P8 Lite (ALE-21)
+Huawei P8 Lite (2017) (PRA-TL10)
+Huawei P8 Lite (2017) (PRA-TL20)
+Huawei P8 Lite (2017) (PRA-LA1)
+Huawei P8 Lite (2017) (PRA-LX1)
+Huawei P8 Lite (2017) (PRA-LX2)
+Huawei P8 Lite (2017) (TAG-L21)
+Huawei P8 Lite (2017) (PRA-AL00X)
+Huawei P8 Lite (2017) (TAG-L32)
+Huawei P8 Lite (2017) (PRA-LX3)
+Huawei P8 Lite (2017) (PRA-AL00)
+Huawei P9 Lite (VNS-L31)
+Huawei P9 Lite (VNS-L21)
+Huawei P9 Lite (VNS-L22)
+Huawei P9 Lite (VNS-L23)
+Huawei P9 Lite (VNS-L53)
+Huawei P9 Lite (VNS-AL00)
+Huawei P9 Lite (VNS-L62)
+Huawei P9 Lite (VNS-L52)
+Huawei P9 Lite (VNS-DL00)
+Huawei P9 Lite (VNS-TL00)
+Huawei P9 Lite (2017) (VNS-L31)
+Huawei P9 Lite (2017) (VNS-L21)
+Huawei P9 Lite (2017) (VNS-L22)
+Huawei P9 Lite (2017) (VNS-L23)
+Huawei P9 Lite (2017) (VNS-L53)
+Huawei P9 Lite (2017) (VNS-AL00)
+Huawei P9 Lite (2017) (VNS-L62)
+Huawei P9 Lite (2017) (VNS-L52)
+Huawei P9 Lite (2017) (VNS-DL00)
+Huawei P9 Lite (2017) (VNS-TL00)
+Huawei P9 (EVA-L09)
+Huawei P9 (EVA-L19)
+Huawei P9 (EVA-L29)
+Huawei P9 (EVA-AL10)
+Huawei P9 (EVA-TL00)
+Huawei P9 (EVA-AL00)
+Huawei P9 (EVA-DL00)
+Huawei P9 Plus (VIE-L09)
+Huawei P9 Plus (VIE-L29)
+Huawei P9 Plus (VIE-AL10)
+Huawei P10 (VTR-L29)
+Huawei P10 (VTR-AL00)
+Huawei P10 (VTR-L09)
+Huawei P10 (VTR-TL00)
+Huawei P10 Lite (WAS-LX1)
+Huawei P10 Lite (WAS-LX2)
+Huawei P10 Lite (WAS-LX3)
+Huawei P10 Lite (WAS-LX1A)
+Huawei P10 Lite (WAS-LX2J)
+Huawei P10 Lite (WAS-L03T)
+Huawei P10 Lite (WAS-AL00)
+Huawei P10 Lite (WAS-TL10)
+Huawei P10 Plus (VKY-L29)
+Huawei P10 Plus (VKY-AL00)
+Huawei P10 Plus (VKY-L09)
+Huawei P20 (EML-L09)
+Huawei P20 (EML-L29)
+Huawei P20 (EML-TL00)
+Huawei P20 (EML-AL00)
+Huawei P20 Pro (CLT-L09)
+Huawei P20 Pro (CLT-L29)
+Huawei P20 Pro (CLT-L01J)
+Huawei P20 Pro (CLT-L0J)
+Huawei P20 Pro (CLT-L04)
+Huawei P20 Pro (CLT-TL01)
+Huawei P20 Pro (CLT-AL00)
+Huawei P20 Pro (CLT-AL01)
+Huawei P20 Lite (ANE-L01)
+Huawei P20 Lite (ANE-L01)
+Huawei P20 Lite (ANE-L02)
+Huawei P20 Lite (ANE-L02)
+Huawei P20 Lite (ANE-L03)
+Huawei P20 Lite (ANE-L03)
+Huawei P20 Lite (ANE-L12)
+Huawei P20 Lite (ANE-L12)
+Huawei P20 Lite (ANE-L21)
+Huawei P20 Lite (ANE-L21)
+Huawei P20 Lite (ANE-L22)
+Huawei P20 Lite (ANE-L22)
+Huawei P20 Lite (ANE-L23)
+Huawei P20 Lite (ANE-L23)
+Huawei P20 Lite (ANE-L42)
+Huawei P20 Lite (ANE-L42)
+Huawei P20 Lite (ANE-LX1)
+Huawei P20 Lite (ANE-LX1)
+Huawei P20 Lite (ANE-TL00)
+Huawei P20 Lite (ANE-TL00)
+Huawei P30 (ELE-L04)
+Huawei P30 (ELE-L09)
+Huawei P30 (ELE-AL00)
+Huawei P30 (ELE-AL10)
+Huawei P30 (ELE-L29)
+Huawei P30 (ELE-TL00)
+Huawei P30 Pro (VOG-TL00)
+Huawei P30 Pro (VOG-AL00)
+Huawei P30 Pro (VOG-AL10)
+Huawei P30 Pro (VOG-L04)
+Huawei P30 Pro (VOG-L09)
+Huawei P30 Pro (VOG-L29)
+Huawei P30 Lite (MAR-L01)
+Huawei P30 Lite (MAR-L01A)
+Huawei P30 Lite 2022 (MAR-L01M)
+Huawei P30 Lite (MAR-L21)
+Huawei P30 Lite (MAR-L21BX)
+Huawei P30 Lite (MAR-L21M)
+Huawei P30 Lite (MAR-L23)
+Huawei P30 Lite (MAR-L23A)
+Huawei P30 Lite (MAR-LX1)
+Huawei P30 Lite (MAR-LX1A)
+Huawei P30 Lite (MAR-LX1M)
+Huawei P30 Lite (MAR-LX21)
+Huawei P30 Lite (MAR-LX21A)
+Huawei P30 Lite (MAR-LX2J)
+Huawei P30 Lite (MAR-LX3)
+Huawei P30 Lite (MAR-LX3A)
+Huawei P30 Lite (MAR-LX2)
+Huawei P30 lite (MAR-LX2)
+Huawei P40 Lite E (ART-L29)
+Honor 10 (COL-L29)
+Honor 10 (COL-AL00)
+Honor 10 (COL-TL10)
+Honor 10 (COL-AL10)
+Honor Play (COR-L29)
+Honor Play (COR-AL10)
+Huawei Mate S (CRR-UL00)
+Huawei Mate S (CRR-L09)
+Huawei Mate S (CRR-UL20)
+Huawei Mate 8 (NXT-AL10)
+Huawei Mate 8 (NXT-CL00)
+Huawei Mate 8 (NXT-DL00)
+Huawei Mate 8 (NXT-TL00)
+Huawei Mate 8 (NXT-L09)
+Huawei Mate 8 (NXT-L29)
+Huawei Mate 9 (MHA-AL00)
+Huawei Mate 9 (MHA-L29)
+Huawei Mate 9 (MHA-L09)
+Huawei Mate 9 lite (MHA-L29)
+Huawei Mate 9 lite (MHA-L09)
+Huawei Mate 9 lite (MHA-AL00)
+Huawei Mate 9 Pro (LON-L29)
+Huawei Mate 9 Pro (LON-AL00)
+Huawei Mate 9 Porsche Design (LON-L29)
+Huawei Mate 9 Porsche Design (LON-AL00)
+Huawei Mate 10 Lite (RNE-L01)
+Huawei Mate 10 Lite (RNE-L02)
+Huawei Mate 10 Lite (RNE-L03)
+Huawei Mate 10 Lite (RNE-L21)
+Huawei Mate 10 Lite (RNE-L23)
+Huawei Mate 10 (ALP-L09)
+Huawei Mate 10 (ALP-L29)
+Huawei Mate 10 Pro (BLA-L09)
+Huawei Mate 10 Pro (BLA-L29)
+Huawei Mate 10 Pro (BLA-AL00)
+Huawei Mate 10 Pro (BLA-A09)
+Huawei Mate 10 Pro (BLA-TL00)
+Huawei Mate 20 (HMA-AL00)
+Huawei Mate 20 (HMA-L29)
+Huawei Mate 20 (HMA-TL00)
+Huawei Mate 20 Premium (HMA-LX9)
+Huawei Mate 20 Pro (LYA-AL00)
+Huawei Mate 20 Pro (LYA-AL10)
+Huawei Mate 20 Pro (LYA-L09)
+Huawei Mate 20 Pro (LYA-L0C)
+Huawei Mate 20 Pro (LYA-L29)
+Huawei Mate 20 Pro (LYA-LX9)
+Huawei Mate 20 Pro (LYA-TL00)
+Huawei Mate 20 Pro (LYA-AL00P)
+Huawei Mate 20 X (EVR-AL00)
+Huawei Mate 20 X (5G)(EVR-AN00)
+Huawei Mate 20 X (EVR-L29)
+Huawei Mate 20 X (5G)(EVR-N29)
+Huawei Mate 20 Lite (SNE-AL00)
+Huawei Mate 20 Lite (SNE-L01)
+Huawei Mate 20 Lite (SNE-L03)
+Huawei Mate 20 Lite (SNE-L21)
+Huawei Mate 20 Lite (SNE-LX1)
+Huawei Mate 20 Lite (SNE-LX2)
+Huawei Mate 20 lite (SNE-LX3)
+Huawei Mate 20 Lite (SNE-L23)
+Honor 9 (STF-L09)
+Honor 9 (STF-AL10)
+Honor 9 (STF-AL00)
+Honor 9 (STF-TL10)
+Honor 9 (STF-L09S)
+Honor 9 Lite (LLD-L21)
+Honor 9 Lite (LLD-L22)
+Honor 9 Lite (LLD-L31)
+Honor 9 Lite (LLD-L32)
+Honor 9 Lite (LLD-TL10)
+Honor 9 Youth (LLD-AL00)
+Honor 9 Youth (LLD-AL10)
+Honor 10 Lite (HRY-AL00)
+Honor 10 Lite (HRY-L21)
+Honor 10 Lite (HRY-L22)
+Honor 10 Lite (HRY-LX2)
+Honor 10 lite (HRY-TL00)
+Honor 10 Lite Premium (HRY-AL00a)
+Honor 10 Lite (HRY-L21T)
+Huawei Y6II (CAM-L21)
+Huawei Y7p (ART-L28)
+Huawei Y8p 2022 (AQM-L01A)
+Huawei Y8P 2022 (AQM-L21)
+Huawei Y9 2018 (FLA-L22)
+Huawei Y9 2018 (FLA-L23)
+Huawei Y9 2018 (FLA-LX2)
+Huawei Y9 2019 (JKM-LX1)
+Huawei Y9 2019 (JKM-LX2)
+Huawei Y9 2019 (JKM-LX3)
+Huawei Y9 2019 (JKM-L21)
+Huawei Y9 2019 (JKM-L22)
+Huawei Y9 2019 (JKM-L23)
+Huawei Y9 2019 (STK-LX2)
+Huawei Y9 2019 (JKM-AL00)
+Huawei Y9 2019 (JKM-AL00B)
+Huawei Y9 Prime 2019 (STK-L22)
+Huawei Y9 Prime 2019 (STK-L21)
+Huawei Y9 Prime 2019 (STK-LX3)
+Huawei Y9 Prime 2019 (STK-L03B)
+Honor 7X (BND-L21)
+Honor 7X (BND-L22)
+Honor 7X (BND-L24)
+Honor 7X (BND-L31)
+Honor 7X (BND-L32)
+Honor 7X (BND-L34)
+Honor Changwan 7X (BND-AL00)
+Honor Changwan 7X (BND-AL10)
+Honor Changwan 7X (BND-TL10)
+Honor Magic2 (TNY-AL00)
+Honor Magic 2 (TNY-TL00)
+Honor 8 Pro (DUK-L09)
+Honor 8 Pro (DUK-AL20)
+Honor 8 Pro (DUK-TL30)
+Honor V9 (DUK-L09)
+Honor V9 (DUK-AL20)
+Honor V9 (DUK-TL30)
+Honor 9X (STK-LX1)
+Honor V20 (PCT-AL10)
+Honor V20 (PCT-TL10)
+Honor Play 3 (ASK-AL00)
+Honor Play 3 (ASK-AL00x)
+Honor Play 3 (ASK-TL00)
+Honor View 20 (PCT-L29)
+Honor Tab 5 (JDN2-AL00HN)
+Honor Pad 6 (AGS3-AL09HN)
+Honor Pad 6 (AGS3-W09HN)
+Honor Pad X6 (AGR-AL09HN)
+Huawei Nova 2 (PIC-AL00)
+Huawei Nova 2 (PIC-CL00)
+Huawei Nova 2 (PIC-CL10)
+Huawei Nova 2 (PIC-L09)
+Huawei Nova 2 (PIC-L29)
+Huawei Nova 2 (PIC-TL00)
+Huawei Nova 2 Plus (BAC-AL00)
+Huawei Nova 2 Plus (BAC-L01)
+Huawei Nova 2 Plus (BAC-L02)
+Huawei Nova 2 Plus (BAC-L03)
+Huawei Nova 2 Plus (BAC-L09)
+Huawei Nova 2 Plus (BAC-L21)
+Huawei Nova 2 Plus (BAC-L22)
+Huawei Nova 2 Plus (BAC-L23)
+Huawei Nova 2 Plus (BAC-TL00)
+Huawei Nova 2i (RNE-L22)
+Huawei Nova 2s (FLA-AL10)
+Huawei Nova 2s (FLA-TL00)
+Huawei Nova 2s (FLA-TL10)
+Huawei Nova 2s (HWI-AL00)
+Huawei Nova 2s (HWI-TL00)
+Huawei Nova 2S (HWI-AL00)
+Huawei Nova 2S (HWI-TL00)
+Huawei Nova 3e (ANE-AL00)
+Huawei Nova 3e (ANE-AL00)
+Huawei Nova 3e (INE-TL00)
+Huawei Nova 3i (INE-AL00)
+Huawei Nova 3i (INE-LX2)
+Huawei Nova 3i (INE-L21)
+Huawei Nova 3i (INE-LX1)
+Huawei Nova 4e (MAR-AL00)
+Huawei Nova 4e (MAR-L22)
+Huawei Nova 4e (MAR-TL00)
+Huawei nova 5 Pro (SEA-AL10)
+Huawei Nova 5 Pro (SEA-TL10)
+Huawei Nova 5i (GLK-AL00)
+Huawei Nova 5i (GLK-TL00)
+Huawei nova 5i (GLK-LX1U)
+Huawei nova 5T (YAL-L61)
+Huawei nova 5T (YAL-L71)
+Huawei Nova 5T (YAL-LX1)
+Huawei Nova 5T (YAL-L21)
+Huawei Nova Lite 3 (POT-L62J)
+Huawei Nova Lite 3 (POT-L72J)
+Huawei Nova Lite 3 (POT-LX2J)
+Huawei Florida (FLA-AL00)
+Huawei MediaPad X1 (4G) (7D-501u)  (Kirin910)
+Huawei MediaPad M5 lite (JDN2-L09)
+Huawei MediaPad M5 Lite 2019 (JDN2-W09)
+Huawei MediaPad M6 (SCM-AL09)
+Huawei MediaPad M6 (SCM-W09)
+Huawei MediaPad M6 (VRD-AL09)
+Huawei MediaPad M6 (VRD-W09)
+Huawei Maimang 8 (POT-AL00)
+Huawei Enjoy 9S (POT-AL00a)
+Huawei Enjoy 9S (POT-TL00)
+Huawei Enjoy 9S (POT-TL00a)
+Huawei Enjoy 9s (POT-AL10)
+Huawei Enjoy 10 (ART-AL00)
+Huawei Enjoy 10 (ART-AL00x)
+Huawei Enjoy 10 (ART-TL00)
+Huawei Enjoy 10 (ART-TL00x)
+Huawei Enjoy 10 Plus (STK-AL00)
+Huawei Enjoy 10 Plus (STK-TL00)
+Huawei Enjoy 10s (AQM-AL00)
+Huawei Enjoy 10s (AQM-TL00)
+Huawei Ascend Mate 7 (MT7-TL00)
+Huawei Ascend Mate 7 (MT7-L09)
+Huawei Ascend Mate 7 (MT7-TL10)
+Huawei Ascend Mate 7 (MT7-CL00)
+Huawei Ascend Mate 7 (MT7-UL00)
+Huawei Honur 5 (JDN2-W09HN)
+Huawei Honur Pad X6 (AGR-W09HN)
+Huawei MatePad T 10s (AGS3-L09)
+
+Added Support Xiaomi Sideload Qualcomm:-
+Note Must be:Recovery Version 5
+- 11 Lite 5G NE
+- 11T
+- 11T Pro
+- 12
+- 12 Lite
+- 12S Ultra
+- 12T Pro
+- 12X
+- Black Shark
+- Black Shark 3
+- Black Shark 3 Pro
+- Black Shark 3S
+- Black Shark 4
+- Black Shark 4 Pro
+- Black Shark 4S
+- Black Shark 4S Pro
+- Black Shark 5
+- Black Shark 5 RS
+- MI 10 5G
+- MI 10 Lite 5G
+- MI 10 Lite Zoom
+- MI 10 Pro 5G
+- MI 10 Ultra
+- MI 10S
+- MI 10T 5G
+- MI 10T Lite 5G
+- MI 10T Pro 5G
+- MI 10i 5G
+- MI 11
+- MI 11 Lite
+- MI 11 Lite 5G
+- MI 11 Pro
+- MI 11 Ultra
+- MI 11X
+- MI 11X Pro
+- MI 11i
+- MI 9
+- MI 9 Pro 5G
+- MI 9T
+- MI 9T Pro
+- MI CC 9 Pro
+- MI CC 9e
+- MI CIVI
+- MI CIVI 1S
+- MI Mix 3 5G
+- MI Mix Fold
+- MI Note 10
+- MI Note 10 Pro
+- Mi 25
+- Mi 4c
+- Mi 5
+- Mi 5S
+- Mi 5S Plus
+- Mi 5X
+- Mi 6
+- Mi 6X
+- Mi 8
+- Mi 8 EE
+- Mi 8 Lite
+- Mi 8 Pro
+- Mi 8 SE
+- Mi 9 SE
+- Mi A2
+- Mi A2 Lite
+- Mi A3
+- Mi A3 (test)
+- Mi Max
+- Mi Max 2
+- Mi Max 3
+- Mi Mix 2
+- Mi Mix 2S
+- Mi Mix 3
+- Mi Note 10 Lite
+- Mi Note 3
+- Mi Pad 4
+- Mi Play
+- Mix 4
+- Pad 5
+- Poco C3
+- Poco C31
+- Poco F2 Pro
+- Poco F3
+- Poco F3 Pro
+- Poco F4
+- Poco F4 GT
+- Poco M2
+- Poco M2 Pro
+- Poco M3
+- Poco M3 Pro 5G
+- Poco M4 Pro 4G
+- Poco M4 Pro 5G
+- Poco X2
+- Poco X3
+- Poco X3 GT
+- Poco X3 NFC
+- Poco X3 Pro
+- Poco X4 Pro 5G
+- Pocophone F1
+- Redmi 10
+- Redmi 10 2022
+- Redmi 10 5G
+- Redmi 10 India
+- Redmi 10 Power
+- Redmi 10A
+- Redmi 10C
+- Redmi 25
+- Redmi 3
+- Redmi 3S
+- Redmi 4
+- Redmi 4 Premium Edition
+- Redmi 4A
+- Redmi 4X
+- Redmi 5
+- Redmi 5 Plus
+- Redmi 5A
+- Redmi 6
+- Redmi 6 Pro
+- Redmi 6A
+- Redmi 7
+- Redmi 7A
+- Redmi 8
+- Redmi 8A
+- Redmi 9
+- Redmi 9 Power
+- Redmi 9A
+- Redmi 9C
+- Redmi 9C NFC
+- Redmi 9T
+- Redmi 9T (QCOM)
+- Redmi Go
+- Redmi K20
+- Redmi K20 Pro
+- Redmi K20 Pro Premium
+- Redmi K30
+- Redmi K30 5G
+- Redmi K30 Pro
+- Redmi K30S Ultra
+- Redmi K30i 5G
+- Redmi K40
+- Redmi K40 Gaming
+- Redmi K40 Pro
+- Redmi K40 Pro Plus
+- Redmi K40S
+- Redmi K50 Gaming
+- Redmi K50 Ultra
+- Redmi Note 10
+- Redmi Note 10 5G
+- Redmi Note 10 Lite
+- Redmi Note 10 Pro
+- Redmi Note 10 Pro 5G
+- Redmi Note 10 Pro Max
+- Redmi Note 10S
+- Redmi Note 11 4G
+- Redmi Note 11 5G
+- Redmi Note 11 NFC
+- Redmi Note 11 Pro 4G
+- Redmi Note 11 Pro 5G
+- Redmi Note 11 Pro Plus 5G
+- Redmi Note 11E Pro
+- Redmi Note 11S 4G
+- Redmi Note 11S 5G
+- Redmi Note 11T 5G
+- Redmi Note 3
+- Redmi Note 3 Pro
+- Redmi Note 4
+- Redmi Note 4X
+- Redmi Note 5
+- Redmi Note 5A
+- Redmi Note 5A Prime
+- Redmi Note 5A S
+- Redmi Note 6 Pro
+- Redmi Note 7
+- Redmi Note 8
+- Redmi Note 8 (2021)
+- Redmi Note 8 Pro
+- Redmi Note 8T
+- Redmi Note 9
+- Redmi Note 9 4G
+- Redmi Note 9 Pro
+- Redmi Note 9 Pro 5G
+- Redmi Note 9 Pro Max
+- Redmi Note 9T
+- Redmi Note 9s
+- Redmi Pro
+- Redmi S2
+- Redmi Y1
+- Redmi Y2
+
+Added New Models Qualcomm [Read/Write Firmware/Erase FRP....]
+China Mobile:-
+- A3S
+- N3
+- N5
+- N5 Pro
+
+LT:-
+- C3200
+- P10-C3200
+- P20-C3600
+- P30-C3700
+- P40-C3750
+- P7S-C1400
+- P8-C2000
+- P9-C3100
+- W7-C1300
+
+Sugar:-
+- Sugar C11
+- Sugar C21
+- Sugar F7
+- Sugar F7 Mine
+- Sugar F9
+- Sugar F11
+- Sugar F11 Pro
+- Sugar S11
+- Sugar S20
+- Sugar Y7 Pro
+- Sugar Y9
+- Sugar Y11
+- Sugar Y12 Max
+- Sugar Y15
+
+
+Added New Models Mediatek [Read/Write Firmware/Erase FRP....]
+UMIDIGI:-
+- 25 Pro
+- 251
+- A3
+- A3 Pro
+- A3S
+- A3X
+- A5 Pro
+- A7
+- A7 Pro
+- A7S
+- A9
+- A9 Pro
+- BISON
+- Bison 2
+- Bison GT
+- BISON Pro
+- BISON X10 Pro
+- C Note
+- C1
+- Crystal
+- F1
+- F1 Play
+- F2
+- G
+- MP28
+- One
+- One Max
+- One Pro
+- Plus E
+- Power
+- Power 3
+- Power 5
+- Pro 2
+- RP01
+- RP03
+- S
+- S2
+- S2 Lite
+- S2 Pro
+- S3 Pro
+- S5 Pro
+- X
+- Z
+- Z Pro
+- Z1
+- Z1 Pro
+- Z2
+- Z2 Pro
+
+Fix some bugs
+improvements search models algo</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.0.7 | 2024/05/21 12:56:12
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>Added Install Arabic 6-14 via theme
+Added Remove Arabic 6-14 via theme
+Added Install Arabic keyboard
+Added 3 Methods to fix baseband samsung via download mode
+Added new langauge to TSM Tool Arabic
+Added Samsung Disable Hands Free Activation
+Added Samsung Disable OTA Update
+Added LG Disable Hands Free Activation
+Added Oneplus Open Diag Menu
+
+Added Enable 3G Motorola Models OneClick:
+XT1765
+XT1921-8
+XT1922
+XT1952
+XT1955
+XT1962
+XT2005
+XT2041
+XT2043
+XT2045
+XT2052
+XT2093
+XT2113DL
+XT2115DL
+XT2117
+XT2131
+
+Added Samsung Change USB Mode Via ADB:
+-DIAG
+-MTP
+-PTP
+-DM-MODEM-ADB
+-RNDIS-DM-MODEM-ADB
+-RMNET-DM-MODEMADPL-ADB
+
+Added New Models Qualcomm [Read/Write Firmware/Erase FRP....]
+ANS:-
+-L50
+-L51
+-UL40
+
+UMX:-
+U683C
+U683CL
+
+Huawei:-
+BKK-series:
+BKK-AL10
+BKK-L22
+BKK-LX2
+
+DUB-series:
+DUB-AL20
+DUB-L22
+DUB-LX2
+
+LDN-series:
+LDN-L01
+LDN-LX2
+LDN-TL10
+LLD-AL30
+LND-AL00
+LND-AL40
+LND-L23
+LND-TL00
+LND-TL302
+
+LDN-series:
+LDN-L01
+LDN-LX2
+LDN-TL10
+LLD-AL30
+LND-AL00
+LND-AL40
+LND-L23
+LND-TL00
+LND-TL302
+
+TRT-series:
+TRT-A1
+TRT-AL00
+TRT-L01
+TRT-L03
+TRT-L21
+TRT-L22
+TRT-L23
+TRT-L53
+TRT-LX1
+TRT-LX2
+TRT-LX3
+TRT-TL00
+TRT-TL10
+
+
+Added New Models Mediatek [Read/Write Firmware/Erase FRP/....]
+Samsung:-[Brom Mode]
+SM-A215U
+SM-A215U1
+SM-A215W
+SM-A125F
+SM-A125M
+SM-A125N
+SM-A125U
+SM-A326B
+SM-A326B/DS
+SM-A326BR/DS
+SM-A326BR
+SM-A326U
+SM-A326W
+SM-A226B
+SM-A226B/DS
+SM-A226B/DSN
+SM-A022F
+SM-A022M
+SM-A022M
+SM-A315F
+SM-A315G
+SM-A315N
+SM-A325F
+SM-A415F
+SM-M013F
+SM-M017F
+SM-M022G
+SM-M022M
+SM-E426B
+SM-E426B/DS
+SM-M326B
+SM-M326B/DS
+SM-A013F
+SM-A013G
+SM-A013M
+
+LG:-[Brom Mode]
+LM-Q730TM
+LM-Q730AM
+LM-Q730MM
+LM-Q730HA
+LM-Q730BAW
+LM-Q730QM5
+LM-Q730QN
+LM-Q710RA
+LM-Q710YAW
+LM-Q710YMW
+LM-Q710ZM
+LM-Q710EM
+LM-Q710FA
+LM-Q710FM
+LM-Q710GX
+LM-Q710HSW
+LM-Q710NAW
+LM-Q710HS
+LM-Q710YBW
+LM-Q710ZA
+LM-K300CMR
+LM-K300UM
+LM-K300QM6
+LM-K300AM
+LM-K300MM
+LM-K525BMW
+LM-K520BMW
+LM-Q630EA
+LGLM-Q630HA
+LM-K500QM
+LM-K500QN
+LM-K500QM6
+LM-K500QM5
+LM-K510BMW
+LM-X520EMW
+LM-X520HM
+LM-X540BMW
+LM-X540EMW
+LM-X540HM
+LM-X540ZMW
+LM-K420BMW
+LM-K420YM
+LM-K420YMW
+LM-K410EMW
+LM-K410FMW
+LM-K410HM
+LM-X430EMW
+LM-X430HM
+LM-X430ZMW
+LGLM-K510HM
+LM-X420HM
+LM-X410FC
+LGLM-X525HM
+LM-X525EAW
+LM-X525HA
+LGLM-K520HM
+LGLM-X120HN
+LM-Q520N
+LGLM-K300QM
+LGLM-K410BZMW
+LM-Q510N
+LGLM-Q730QM
+LGLM-X520BMW
+LM-X410FO
+LGLM-X510S
+LGLM-X525BAW
+LGLM-Q630N
+LGLM-X525ZAW
+LGLM-X525ZA
+LM-Q630H
+LGLM-K400AK
+LGLM-K420HMW
+LM-Q310N
+LGLM-K420EMW
+LGLM-K520EMW
+LM-X420EM
+LGLM-K520HMW
+LGLM-K510ZMW
+LGLM-X510S
+LGLM-K510EMW
+LGLM-X525PR
+
+
+Huawei:-[Brom Mode]
+TIT-series:
+-TIT-AL00
+-TIT-L01
+-TIT-TL00
+-TIT-U02
+
+MYA-series:
+-MYA-AL00
+-MYA-L02
+-MYAL03
+-MYA-L11
+-MYA-L13
+-MYA-L22
+-MYA-L23
+-MYA-L41
+-MYA-TL00
+-MYA-U29
+
+LUA-series:
+LUA-L01
+LUA-L02
+LUA-L03
+LUA-L13
+LUA-L21
+LUA-L21 V2
+LUA-L22
+LUA-L23
+LUA-U03
+LUA-U22
+
+LYO-series:
+LYO-L01
+LYO-L02
+LYO-L21
+
+JMM-series:
+JMM-A-L00
+JMM-L22
+
+
+CUN-series:
+
+CUN-L01
+CUN-L03
+CUN-L21
+CUN-L22
+CUN-L23
+CUN-L33
+CUN-U29
+
+CRO-series:
+
+CRO-L22
+CRO-U00
+
+DRA-series:
+
+DRA-AL00
+DRA-L01
+DRA-L02
+DRA-L21
+DRA-L22
+DRA-LX2
+DRA-LX3
+DRA-LX5
+DRA-LX9
+
+DUA-series:
+DUA-A-L00
+DUA-L22
+DUA-TL00
+
+
+Vivo:- [BROM Mode]
+Y76s 5G
+Y21 2021
+Y19
+Y12s
+Y3s 2021
+Y15a
+Y15s
+Y15 2019
+Y72 5G
+Y52 5G
+Y52s
+Y20
+Y30
+Y33s
+Y12
+Y11
+Y17
+Y91i
+Y91c
+Y93
+Y20G
+Y83
+V21e 5G
+Y71T 5G
+Y31s
+S9e 5G
+Y54s 5G
+Y76 5G
+T1x
+Y81i
+Y85
+IQOO Z5x
+S10e
+Y1s
+IQoo Z1
+S10
+S10 Pro
+S9 5G
+S1
+Y52s
+S7e
+Y73s
+X60t
+V23e
+V2026
+T1x 5G
+S9
+X70 5G
+X70 Pro
+
+Oppo:- [BROM Mode]
+ A53s 5G
+A55 5G
+A56 5G
+A5s
+A9
+A91
+A9x
+A54 4G
+A75
+A75s
+A77
+A79
+A71
+A7n
+A71s
+A85
+A83
+A8
+A15
+A15s
+A31
+A35
+A16
+A12
+A12s
+K7x
+K9x
+A11k
+A1
+K9 Pro
+A92s
+A93
+A93s 5G
+K9x
+F3
+F9
+F11
+F11 pro
+F13 pro
+F15
+F1S
+F17 PRO
+F19 Pro
+Reno 2F
+Reno 2z
+Reno7 SE
+Reno4 SE
+Reno4 Z 5G
+Reno5 Pro
+Reno7 SE
+Reno 6
+Reno 6 Pro
+Reno3 Pro
+R19
+
+Realme:- [Brom Mode]
+Q3 Pro
+Q3i 5G
+V11 5G
+V13 5G
+V3
+V5
+X7 Max
+X7 Pro
+3
+8 5G
+GT Neo 2T
+GT Neo Flash
+Narzo 30 5G
+Q2i
+C15
+C12
+C11
+C2
+6i
+
+Xiaomi:- [Brom Mode]
+Redmi Note 11 5G [ EVERGO ]
+Redmi Note 11 Pro/Xiaomi 11i [ PISSARRO ]
+Xiaomi 11T [ AGATE/AMBER ]
+Redmi Note 9 5G [ CANNON ]
+Redmi Note 9 5GT [ CANNONG ]
+Redmi Note 8 Pro [ BEGONIA ]
+Redmi Note 9 /Redmi 10X [ MERLIN ]
+Redmi 9C NFC [ ANGELICAN ]
+Redmi 6A [ CACTUS ]
+Pocophone M2 [ SHIVA ]
+Redmi Note 10 5G [ CAMELLIA ]
+Redmi 9 India [ CATTAIL ]
+Redmi 6 [ CEREUS ]
+Redmi 10X Pro 5G [ ATOM / BOMB ]
+POCO X3 GT [ CHOPIN ]
+Redmi 9A / 9T [ DANDELION ]
+Redmi 9C / PocoPhone C3 [ ANGELICA ]
+Redmi K40 Gaming / POCO F3 GT [ ARES ]
+Redmi Note 8 2021 [ BILOBA ]
+Redmi 9 [ LANCELOT ]
+Mi Play [ LOTUS ]
+Redmi Note 10S [ ROSEMARY / SECRET ]
+Redmi 10 / 10 Prime [ SELENE ]
+
+
+fix moto flasher
+fix xiaomi flasher to work with newer frimares
+
+improvements and fix bugs</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.0.5 | 2024/04/15 11:45:34
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>added button for replace sim [force] 4G
+added new models 4G:
+Galaxy A6 SM-A6200
+Galaxy On 5 SM-G5528
+Galaxy On 5 SM-G5510
+Galaxy On 5 SM-G5520
+Galaxy A52  SM-A525F
+Galaxy A52  SM-A525M
+Galaxy A71 5G UW SM-A716V
+LG V40 V405
+LG V20 LS997
+LG V60 ThinQ 5G V600TM
+LT P40
+LT P9
+LT P9I
+LT P20
+
+fix installing 4g bug
+fix many minor bugs</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.0.6 | 2024/04/20 12:04:31
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>Added New Samsung EDL Loaders:-
+-Galaxy A52 (SM-A526U) bit10
+-Galaxy A71 5G (SM-A716U) bit9
+-Galaxy Z Flip3 5G (SM-F711U) bit5
+-Galaxy Z Flip4 (SM-F721B) bit4
+-Galaxy Z Flip4 (SM-F721U) bit3
+-Galaxy Z Fold3 5G (SM-F926B) bit4
+-Galaxy Z Fold3 5G (SM-F926B) bit5
+-Galaxy Z Fold3 5G (SM-F926U) bit4
+-Galaxy Z Fold4 (SM-F936U) bit3
+-Galaxy S10e (SM-G970U) bit7
+-Galaxy S10 (SM-G973U) bit7
+-Galaxy S10+ (SM-G975U) bit7
+-Galaxy S20 5G (SM-G981U) bit7
+-Galaxy S20+ 5G (SM-G986U) bit7
+-Galaxy S20 Ultra 5G (SM-G988U) bit7
+-Galaxy S21 5G (SM-G991U) bit9
+-Galaxy S21+ 5G (SM-G996U) bit8
+-Galaxy S21+ 5G (SM-G996U) bit9
+-Galaxy S21 Ultra 5G (SM-G998U) bit8
+-Galaxy S21 Ultra 5G (SM-G998U) bit9
+-Galaxy Note10 (SM-N970U) bit7
+-Galaxy Note10+ (SM-N975U) bit7
+-Galaxy Note10+ (SM-N975U) bit8
+-Galaxy Note20 5G (SM-N981U) bit2
+-Galaxy Note20 Ultra 5G (SM-N986U) bit5
+-Galaxy S22 5G (SM-S901E) bit7
+-Galaxy S22 5G (SM-S901U) bit3
+-Galaxy S22 Ultra 5G (SM-S908E) bit7
+-Galaxy S22 Ultra 5G (SM-S908U) bit3
+-Galaxy S23 (SM-S911B) bit3
+-Galaxy S23+ (SM-S916B) bit3
+
+Added new models and methods 4G
+-Added All 5G Samsung[Beta]
+-Added All 5G Xiaomi[Beta]
+-Added All 5G Motorola[Beta]
+-Added All 4G Motorola[Beta]
+
+Added LT open diag menu [IMS/Diag]
+Added enable diag motorola [Fastboot]
+Added Disable Mi OTA Update [MediaTek]
+Added auto detect diag port 4G Cdma/Volte
+improvements samsung flasher gui and protocol
+fix many minor bugs
+
+Download Link:
+https://www.tsm-tool.com/dl</pre>
+            </div>
+        </div>
+          
+        <div class="user-update style-1">
+            <div class="info-item">
+                <div class="info-value">
+                    TurboServiceMobile V1.1.0 | 2024/06/22 17:38:53
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="info-item">
+                <pre>Added Repair IMEI Universal MTK BROM
+[Note :not support Samsung/Xiaomi Devices]
+- support almost mtk chips
+MT6762
+MT6763
+MT6765
+MT6768
+MT6771
+MT6755
+MT6761
+MT6761V
+MT6761WAB
+MT6739
+MT6739V
+MT6739WW
+MT6771C
+MT6771V
+MT6779
+MT6785
+MT6833 [Dimensity 700 5G]
+MT6853 [Dimensity 720 5G]
+MT6873 [Dimensity 800 5G]
+MT6877 [Dimensity 900 5G]
+MT6883 [Dimensity 800]
+MT6885 [Dimensity 1000L]
+MT6889 [Dimensity 1000]
+MT6891 [Dimensity 1100 5G]
+MT6893 [Dimensity 1200 5G]
+Supported more than 1000 Model
+
+
+ِAdded 4G Models (EXYNOS-MTK):-
+- Auto|Manual Installer
+- Fix Carrier
+
+Galaxy A10e,SM-A102U(U1) Exynos
+Galaxy A20,SM-A205U(U1) Exynos
+Galaxy A40,SM-A405U(U1) Exynos
+Galaxy A42,SM-A426U(U1) Exynos
+Galaxy A50,SM-A505U(U1) Exynos
+Galaxy A51,SM-A515U(U1) Exynos
+Galaxy A32,SM-A326U(U1) Mediatek
+Galaxy A12,SM-A125U(U1) Mediatek
+Galaxy A21,SM-A215U(U1) Mediatek
+Galaxy J7 Refine,SM-J737P Exynos
+Galaxy J7 V (2018),SM-J737V Exynos
+Samsung Galaxy J7 Aura SM-J737R4/Exynos
+Samsung Galaxy J3 2018 SM-J337V/Exynos
+Galaxy J3 Achieve SM-J337P Exynos
+Samsung Galaxy J3 Aura SM-J337R4 Exynos
+
+Added New Models Mediatek [Read/Write Firmware/Erase FRP....]
+Tecno:-
+- Tecno Spark 7
+- Tecno Pova 2
+- Tecno Spark Go 2021
+- Tecno Spark 7T
+- Tecno Pova
+- Tecno Spark Power 2 Air
+- Tecno Spark Go 2020
+- Tecno Spark Go Plus
+- Tecno Spark Power
+- Tecno Camon i4
+- Tecno Camon IClick2
+- Tecno Camon iAce 2X
+- Tecno Camon iAce
+- Tecno Camon iClick
+- Tecno i7
+- Tecno Camon i Sky
+- Tecno Spark 7P
+
+Meizu:-
+- Meizu 8 Pro   (M813G)
+- Meizu M2 (M88)
+- Meizu M2 Note (M81)
+- Meizu M5C (M1710)
+- Meizu M6 (M1811)
+- Meizu M8 (V8 PRO)
+- Meizu Pro 6S (M80S)
+- Meizu U10 (U10)
+- Meizu U20 (U20)
+- Meizu M3 Note (L91/L681H)
+- Meizu M3X (M3X)
+- Meizu M10 (M10)
+- Meizu V8 (V8)
+- Meizu Pro 7
+- Meizu Pro 7S
+- Meizu Pro 7 Plus
+- Meizu M3
+- Meizu M3s
+- Meizu M3 Max
+- Meizu M5
+- Meizu M5 Note
+- Meizu M6 (M711H)
+- Meizu M6T
+- Meizu V8 Pro
+- Meizu M5S
+- Meizu M3E
+- Meizu Pro 7 (M1792 / M1792L)
+- Meizu M10 (M1918)
+- Meizu E2 (M2E)
+- Meizu X       U30
+
+Improvements And fix mtk bugs</pre>
+            </div>
+        </div>
+         
+
+    </div>
+
+    
+
+
+    <div class="bottom-icons">
+        <a href="https://www.youtube.com/@TSM_TOOL" target="_blank" class="icon youtube-icon">
+            <i class="fab fa-youtube fa-2x"></i>
+        </a>
+        <a href="https://t.me/tsm_tool_pro" target="_blank" class="icon whatsapp-icon">
+            <i class="fab fa-whatsapp fa-2x"></i>
+        </a>
+        <a href="https://wa.me/967774149017" target="_blank" class="icon whatsapp-icon">
+            <i class="fab fa-whatsapp fa-2x"></i>
+        </a>
+        <a href="https://www.facebook.com/tsm.tool.pro" target="_blank" class="icon facebook-icon">
+            <i class="fab fa-facebook fa-2x"></i>
+        </a>
+        <a href="https://t.me/TSMPRO" target="_blank" class="icon telegram-icon">
+            <i class="fab fa-telegram fa-2x"></i>
+        </a>
+    </div>
+
+    
+    <a class="btn-floating btn-large red" id="scrollToTopBtn">
+        <i class="material-icons">arrow_upward</i>
+    </a>
+
+    
+    <script>
+        let slides = document.getElementsByClassName("mySlides");
+        let slideIndex = 0;
+        NextSlide();
+
+        function NextSlide() {
+            let i;
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(NextSlide, 7400); // Change image every 5 seconds
+        }
+
+        function ShowSlide(IsNext) {
+            let i;
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex = (IsNext == 1 ? slideIndex += 1 : slideIndex -= 1);
+            if (slideIndex <= 0)
+                slideIndex = slides.length;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+    
+
+
+    <!-- materialize JS  -->
+    <script src="/static/js/materialize.min.js"></script>
+    <script src="/static/js/TSMUKJaveScript.js"></script>
+
+    <script>
+        $('.modal').modal();
+
+        let UserPanel = "";
+        top.ToastMessage = function(msg, sc_type = true) {
+            top.lastmsg = msg;
+            type = "check_circle";
+            if (!sc_type) {
+                type = "warning_amber";
+            }
+            var toastHTML = "<i class=\"material-icons ico-input3\">" + type + "</i><span class=\"padding-80 msg-text\">" + msg + "</span><i class=\"waves-effect waves-light ico-input3 material-icons btn-refresh\" style=\"width:50px;\">sync</i><i class=\"waves-effect waves-light ico-input3 material-icons btn-copy-msg\" style=\"width:50px;\">content_copy</i>";
+
+            M.toast({
+                html: toastHTML,
+                classes: "waves-effect waves-light btn-large"
+            });
+
+            let btnRefresh = document.querySelector(".btn-refresh"),
+                btnCopymsg = document.querySelector(".btn-copy-msg");
+
+            if (btnRefresh) {
+                btnRefresh.addEventListener("click", function() {
+                    window.location.reload(true);
+                });
+            }
+            if (btnCopymsg) {
+                btnCopymsg.addEventListener("click", function() {
+                    let msg = document.querySelector(".msg-text");
+                    if (msg) {
+                        navigator.clipboard.writeText(msg.innerHTML);
+                    }
+                });
+            }
+        }
+
+        window.addEventListener('offline', function(e) {
+            top.ToastMessage("Ohh Offline!", false);
+            top.root.classList.add("disable-click");
+        });
+
+        window.addEventListener('online', function(e) {
+            top.ToastMessage("Ok Online Now!", true);
+            top.root.classList.remove("disable-click");
+        });
+
+        if (!navigator.onLine) {
+            top.ToastMessage("Ohh Offline!", false);
+            top.root.classList.add("disable-click");
+        }
+
+        function GetDate(BeforeOneDay = false) {
+            let currentDate = new Date();
+            let cDay = currentDate.getDate();
+            let cMonth = currentDate.getMonth() + 1;
+            let cYear = currentDate.getFullYear();
+
+            if (BeforeOneDay) {
+                if (cDay == 1) {
+                    cDay = 30;
+                    cMonth--;
+                } else {
+                    cDay--;
+                }
+            }
+            if (cMonth < 10) {
+                cMonth = "0" + cMonth;
+            }
+            if (cDay < 10) {
+                cDay = "0" + cDay;
+            }
+            value = '';
+            value = cYear + "/" + cMonth + "/" + cDay;
+            return value;
+        }
+
+        function GetMaxDate() {
+            let date = new Date();
+            let toYear = date.getFullYear();
+            let toMonth = date.getMonth();
+            let toDay = date.getDate();
+            return new Date(toYear, toMonth, toDay + 1);
+        }
+
+        function GetMinDate() {
+            let toYear = 2021;
+            let toMonth = 2;
+            let toDay = 1;
+            return new Date(toYear, toMonth, toDay);
+        }
+
+        top.SetupThemeWidgets = function() {
+
+            $(".dropdown-trigger").dropdown();
+
+            $('.sidenav').sidenav();
+
+            $('.modal').modal();
+
+            $('.fixed-action-btn').floatingActionButton({
+                // toolbarEnabled: true,
+                // direction: 'left'
+            });
+
+            $('.tooltipped').tooltip({
+                direction: 'left'
+            });
+
+            $("select").formSelect();
+
+            //top.ToastMessage("Setup Widgets Success [Main]", true);
+        }
+
+        top.SetupFunctions = function() {
+            // Array to track the ids of the details displayed rows
+            var detailRows = [];
+
+            $('#DataTable_id tbody').on('click', 'tr td.details-control', function() {
+                var tr = $(this).closest('tr');
+                var row = top.tableData.row(tr);
+                var idx = $.inArray(tr.attr('id'), detailRows);
+
+                if (row.child.isShown()) {
+                    tr.removeClass('details');
+                    row.child.hide();
+
+                    // Remove from the 'open' array
+                    detailRows.splice(idx, 1);
+                } else {
+                    tr.addClass('details');
+                    row.child(format(row.data())).show();
+
+                    // Add to the 'open' array
+                    if (idx === -1) {
+                        detailRows.push(tr.attr('id'));
+                    }
+                }
+            });
+
+            // On each draw, loop over the `detailRows` array and show any child rows
+            top.tableData.on('draw', function() {
+                $.each(detailRows, function(i, id) {
+                    $('#' + id + ' td.details-control').trigger('click');
+                });
+            });
+
+            document.querySelector("#DataTable_id_filter > label > input[type=search]");
+
+            function ClickBySelector(Selector) {
+                let itm = document.querySelector(Selector)
+                if (itm) {
+                    itm.click();
+                } else {
+                    console.log("Fail to detect ..." + Selector);
+                }
+            }
+
+
+            function createElement(name, classEntry = '', inner = '') {
+                let newItem = document.createElement(name);
+                newItem.innerHTML = inner;
+                if (classEntry) {
+                    newItem.classList = classEntry;
+                }
+                return newItem;
+            }
+
+            $('.datepicker').datepicker({
+                format: 'yyyy/mm/dd',
+                setDefaultDate: true,
+                maxDate: GetMaxDate(),
+                minDate: GetMinDate()
+            });
+
+            top.AutoRefresh = true;
+            //top.ToastMessage("Setup Table Functions", true);
+        }
+
+        $(document).ready(function() {
+            top.SetupThemeWidgets();
+
+
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            // Show the button when the user scrolls down 100px
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            };
+
+            // Scroll to top when the button is clicked
+            scrollToTopBtn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
